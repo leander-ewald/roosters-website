@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { NEWS as ALL_NEWS } from "@/lib/data";
 
 /* ── Data (echte Inhalte von iserlohn-roosters.de, Stand 27.02.2026) ── */
 const NEXT_GAME = {
@@ -14,40 +15,7 @@ const NEXT_GAME = {
   info: "Fast ausverkauft — nur noch 600 Tickets bis zum Rekord!",
 };
 
-const NEWS = [
-  {
-    id: 1,
-    title: "Informationen zum Rechnungsversand der Dauerkarten 26/27",
-    date: "26.02.2026",
-    category: "Tickets",
-    excerpt:
-      "Der Rechnungsversand für die Dauerkarten der Saison 2026/27 hat begonnen. Alle wichtigen Informationen zum Ablauf und den Fristen findet ihr hier.",
-  },
-  {
-    id: 2,
-    title: "4:1 in Nürnberg — Klassenerhalt gesichert!",
-    date: "25.02.2026",
-    category: "Spielbericht",
-    excerpt:
-      "Die Iserlohn Roosters sicherten sich mit einem starken 4:1-Auswärtssieg bei den Nürnberg Ice Tigers vorzeitig den Klassenerhalt in der DEL.",
-  },
-  {
-    id: 3,
-    title: "Partie gegen Augsburg vorzeitig ausverkauft",
-    date: "25.02.2026",
-    category: "Tickets",
-    excerpt:
-      "Das Heimspiel gegen die Augsburger Panther ist fast ausverkauft — nur noch rund 600 Tickets fehlen bis zum neuen Zuschauerrekord am Seilersee!",
-  },
-  {
-    id: 4,
-    title: "Interview: Sportdirektor Fritzmeier zur strategischen Positionierung",
-    date: "24.02.2026",
-    category: "Verein",
-    excerpt:
-      "Sportdirektor Franz-David Fritzmeier spricht im exklusiven Interview über die strategische Ausrichtung der Roosters und die Planungen für die kommende Saison.",
-  },
-];
+const NEWS = ALL_NEWS.slice(0, 4);
 
 const SPONSORS = [
   "Raab Karcher",
@@ -235,7 +203,7 @@ export default function Home() {
               <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">
                 Aktuelles
               </p>
-              <h2 className="section-title !mb-0">Neuigkeiten</h2>
+              <h2 className="section-title mb-0">Neuigkeiten</h2>
             </div>
             <Link
               href="/news"
@@ -250,9 +218,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {NEWS.map((article, i) => (
-              <Link href={`/news/${article.id}`} key={article.id} className="group">
+              <Link href={`/news/${article.id}`} key={article.id} className={`group ${i === 0 ? "md:col-span-2" : ""}`}>
                 <article className="card h-full flex flex-col">
-                  <div className={`aspect-[16/10] relative overflow-hidden ${i === 0 ? 'md:col-span-2 md:aspect-[16/8]' : ''}`}>
+                  <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[16/8]' : 'aspect-[16/10]'}`}>
                     <div className="absolute inset-0 bg-gradient-to-br from-navy to-purple" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <span className="absolute top-3 left-3 bg-red text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">

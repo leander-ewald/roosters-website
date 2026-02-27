@@ -19,7 +19,7 @@ export default function FanshopPage() {
     <>
       <section className="bg-navy pt-12 pb-16">
         <div className="container">
-          <p className="text-gold text-xs font-bold uppercase tracking-[0.15em] mb-2">Shop</p>
+          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Shop</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Fanshop</h1>
           <p className="text-white/50 mt-2">Offizielle Fanartikel der Iserlohn Roosters</p>
         </div>

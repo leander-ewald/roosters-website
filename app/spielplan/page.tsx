@@ -100,7 +100,7 @@ export default function SpielplanPage() {
                             {game.homeScore}:{game.awayScore}
                           </span>
                         ) : (
-                          <span className="text-xs font-bold text-gold uppercase">Live</span>
+                          <span className="text-xs font-bold text-navy uppercase">{game.time}</span>
                         )}
                       </div>
                     </div>

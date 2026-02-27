@@ -17,7 +17,7 @@ export default function SponsoringPage() {
     <>
       <section className="bg-navy pt-12 pb-16">
         <div className="container">
-          <p className="text-gold text-xs font-bold uppercase tracking-[0.15em] mb-2">Business</p>
+          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Sponsoring</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Sponsoring</h1>
           <p className="text-white/50 mt-2">Werden Sie Partner der Iserlohn Roosters</p>
         </div>
@@ -57,7 +57,7 @@ export default function SponsoringPage() {
           </div>
 
           {/* VIP */}
-          <div className="bg-gradient-to-br from-navy to-purple rounded-2xl p-8 md:p-12 text-white max-w-4xl mx-auto">
+          <div id="vip" className="bg-gradient-to-br from-navy to-purple rounded-2xl p-8 md:p-12 text-white max-w-4xl mx-auto scroll-mt-24">
             <h2 className="text-3xl font-black uppercase mb-4">VIP & Hospitality</h2>
             <p className="text-white/60 mb-6 max-w-xl">
               Erleben Sie DEL-Eishockey hautnah aus unserer VIP-Lounge. Exklusives

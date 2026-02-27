@@ -35,7 +35,7 @@ export default function TicketsPage() {
     <>
       <section className="bg-navy pt-12 pb-16">
         <div className="container">
-          <p className="text-gold text-xs font-bold uppercase tracking-[0.15em] mb-2">Ticketshop</p>
+          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Ticketshop</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Tickets</h1>
           <p className="text-white/50 mt-2">Sichere dir jetzt dein Ticket für das nächste Heimspiel</p>
         </div>

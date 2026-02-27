@@ -15,7 +15,7 @@ export default function ImpressumPage() {
       </section>
 
       <section className="section">
-        <div className="container max-w-3xl prose prose-gray">
+        <div className="container max-w-3xl">
           <h2 className="text-xl font-black uppercase text-navy mb-4">Angaben gemäß § 5 TMG</h2>
           <div className="text-sm text-gray-600 space-y-1 mb-8">
             <p className="font-bold text-navy text-base">Iserlohn Roosters GmbH</p>

@@ -3,7 +3,7 @@ import { ORGANISATION } from "@/lib/team";
 
 export const metadata: Metadata = {
   title: "Organisation",
-  description: "Geschäftsführung und Geschäftsstelle der Iserlohn Roosters GmbH & Co. KG.",
+  description: "Geschäftsführung und Geschäftsstelle der Iserlohn Roosters GmbH.",
 };
 
 export default function OrganisationPage() {
@@ -24,7 +24,7 @@ export default function OrganisationPage() {
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">
             Organisation
           </h1>
-          <p className="text-white/50 mt-2">Iserlohn Roosters GmbH & Co. KG</p>
+          <p className="text-white/50 mt-2">Iserlohn Roosters GmbH</p>
         </div>
       </section>
 
@@ -63,14 +63,14 @@ export default function OrganisationPage() {
             <div className="grid sm:grid-cols-2 gap-6 text-white/70 text-sm">
               <div>
                 <p className="font-bold text-white mb-1">Adresse</p>
-                <p>Iserlohn Roosters GmbH & Co. KG</p>
-                <p>Seilerseestraße 24</p>
+                <p>Iserlohn Roosters GmbH</p>
+                <p>Seilerseestraße 105</p>
                 <p>58636 Iserlohn</p>
               </div>
               <div>
                 <p className="font-bold text-white mb-1">Kontakt</p>
-                <p>Tel: 02371 / 80 80 80</p>
-                <p>Fax: 02371 / 80 80 89</p>
+                <p>Tel: 02371 / 951 95 10</p>
+                <p>Fax: 02371 / 951 95 19</p>
                 <p>info@iserlohn-roosters.de</p>
               </div>
             </div>

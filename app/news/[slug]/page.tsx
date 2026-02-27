@@ -47,7 +47,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       {/* Content */}
       <section className="py-12">
         <div className="container max-w-3xl">
-          <div className="prose prose-lg max-w-none">
+          <div className="max-w-none">
             {article.content.split("\n\n").map((para, i) => {
               if (para.startsWith("**") && para.endsWith("**")) {
                 return <h3 key={i} className="font-bold text-xl uppercase text-navy mt-8 mb-4">{para.replace(/\*\*/g, "")}</h3>;

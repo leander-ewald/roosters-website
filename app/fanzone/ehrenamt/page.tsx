@@ -11,7 +11,7 @@ export default function EhrenamtPage() {
     <>
       <section className="bg-navy pt-12 pb-16">
         <div className="container">
-          <p className="text-gold text-xs font-bold uppercase tracking-[0.15em] mb-2">Fanzone</p>
+          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Fanzone</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Ehrenamt</h1>
         </div>
       </section>

@@ -35,7 +35,7 @@ export default function PartnerPage() {
     <>
       <section className="bg-navy pt-12 pb-16">
         <div className="container">
-          <p className="text-gold text-xs font-bold uppercase tracking-[0.15em] mb-2">Sponsoring</p>
+          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Sponsoring</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Unsere Partner</h1>
         </div>
       </section>

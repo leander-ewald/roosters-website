@@ -37,7 +37,7 @@ const NAV_ITEMS = [
     children: [
       { label: "Mitgliedschaft", href: "/verein/mitgliedschaft" },
       { label: "Kids Club", href: "/verein/kids-club" },
-      { label: "Golden Roosters", href: "/verein/golden-roosters" },
+      { label: "Ehrenamt", href: "/fanzone/ehrenamt" },
       { label: "Young Roosters", href: "https://youngroosters.de", external: true },
     ],
   },
@@ -45,7 +45,7 @@ const NAV_ITEMS = [
     label: "Sponsoring",
     children: [
       { label: "Sponsor werden", href: "/sponsoring" },
-      { label: "VIP & Hospitality", href: "/sponsoring/vip" },
+      { label: "VIP & Hospitality", href: "/sponsoring#vip" },
       { label: "Sponsoren", href: "/sponsoring/partner" },
     ],
   },

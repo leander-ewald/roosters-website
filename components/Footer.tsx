@@ -86,7 +86,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">
-              Iserlohn Roosters GmbH & Co. KG
+              Iserlohn Roosters GmbH
               <br />
               Deutsche Eishockey Liga
             </p>
@@ -119,7 +119,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
-            &copy; {new Date().getFullYear()} Iserlohn Roosters GmbH & Co. KG. Alle Rechte vorbehalten.
+            &copy; {new Date().getFullYear()} Iserlohn Roosters GmbH. Alle Rechte vorbehalten.
           </p>
 
           <div className="flex items-center gap-4">
