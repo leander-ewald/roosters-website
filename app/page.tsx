@@ -3,48 +3,49 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 
-/* ── Fake data (will be replaced with CMS/API later) ── */
+/* ── Data (echte Inhalte von iserlohn-roosters.de, Stand 27.02.2026) ── */
 const NEXT_GAME = {
   home: { name: "Iserlohn Roosters", short: "IR" },
-  away: { name: "Eisbären Berlin", short: "EB" },
-  date: "Fr. 28.02.2026",
-  time: "19:30 Uhr",
+  away: { name: "Augsburger Panther", short: "AP" },
+  date: "So. 01.03.2026",
+  time: "14:00 Uhr",
   venue: "Eissporthalle am Seilersee",
   ticketUrl: "https://tickets.iec.de/",
+  info: "Fast ausverkauft — nur noch 600 Tickets bis zum Rekord!",
 };
 
 const NEWS = [
   {
     id: 1,
-    title: "Klassenerhalt gesichert — 4:1 Sieg in Nürnberg",
-    date: "27.02.2026",
-    category: "Spielbericht",
-    excerpt:
-      "Die Iserlohn Roosters zeigten eine starke Auswärtsleistung und sicherten sich mit einem klaren 4:1-Sieg bei den Nürnberg Ice Tigers den Klassenerhalt in der DEL.",
-  },
-  {
-    id: 2,
-    title: "Saisonkarten 2026/27 — Jetzt Frühbucher-Rabatt sichern",
+    title: "Informationen zum Rechnungsversand der Dauerkarten 26/27",
     date: "26.02.2026",
     category: "Tickets",
     excerpt:
-      "Ab sofort können Dauerkarten für die kommende Saison zum vergünstigten Frühbucher-Preis erworben werden. Sichert euch jetzt euren Stammplatz am Seilersee.",
+      "Der Rechnungsversand für die Dauerkarten der Saison 2026/27 hat begonnen. Alle wichtigen Informationen zum Ablauf und den Fristen findet ihr hier.",
+  },
+  {
+    id: 2,
+    title: "4:1 in Nürnberg — Klassenerhalt gesichert!",
+    date: "25.02.2026",
+    category: "Spielbericht",
+    excerpt:
+      "Die Iserlohn Roosters sicherten sich mit einem starken 4:1-Auswärtssieg bei den Nürnberg Ice Tigers vorzeitig den Klassenerhalt in der DEL.",
   },
   {
     id: 3,
-    title: "Neuzugang: Tyler Boland kommt von den Adler Mannheim",
+    title: "Partie gegen Augsburg vorzeitig ausverkauft",
     date: "25.02.2026",
-    category: "Kader",
+    category: "Tickets",
     excerpt:
-      "Die Roosters verstärken sich für die kommende Saison mit dem kanadischen Stürmer Tyler Boland, der in dieser Saison 32 Scorerpunkte für Mannheim erzielte.",
+      "Das Heimspiel gegen die Augsburger Panther ist fast ausverkauft — nur noch rund 600 Tickets fehlen bis zum neuen Zuschauerrekord am Seilersee!",
   },
   {
     id: 4,
-    title: "Kids Club Aktionstag — Eislaufen mit den Profis",
+    title: "Interview: Sportdirektor Fritzmeier zur strategischen Positionierung",
     date: "24.02.2026",
     category: "Verein",
     excerpt:
-      "Am kommenden Samstag findet der beliebte Kids Club Aktionstag statt. Alle Mitglieder sind herzlich eingeladen, gemeinsam mit den Spielern aufs Eis zu gehen.",
+      "Sportdirektor Franz-David Fritzmeier spricht im exklusiven Interview über die strategische Ausrichtung der Roosters und die Planungen für die kommende Saison.",
   },
 ];
 
