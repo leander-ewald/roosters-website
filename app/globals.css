@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #002652;
+  --navy-dark: #001a3a;
+  --blue: #1a3c85;
+  --purple: #621979;
+  --red: #E32B2B;
+  --gold: #FFD737;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f4f4f4;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-dark: var(--navy-dark);
+  --color-blue: var(--blue);
+  --color-purple: var(--purple);
+  --color-red: var(--red);
+  --color-gold: var(--gold);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+  --font-sans: var(--font-montserrat);
+}
+
+/* === Base === */
+body {
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--gray-900);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* === Typography === */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* === Buttons === */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: #c72424;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(227, 43, 43, 0.3);
+}
+
+.btn-secondary {
+  background: var(--navy);
+  color: var(--white);
+}
+.btn-secondary:hover {
+  background: var(--blue);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--navy);
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+.btn-gold:hover {
+  background: #e6c230;
+  transform: translateY(-1px);
+}
+
+/* === Section === */
+.section {
+  padding: 4rem 0;
+}
+@media (min-width: 768px) {
+  .section { padding: 6rem 0; }
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--navy);
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .section-title { font-size: 2.5rem; }
+}
+
+.section-subtitle {
+  font-size: 1.125rem;
+  color: var(--gray-500);
+  font-weight: 500;
+  max-width: 600px;
+}
+
+/* === Cards === */
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+/* === Container === */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+@media (min-width: 640px) {
+  .container { padding: 0 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .container { padding: 0 2rem; }
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--navy);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue);
+}
+
+/* === Selection === */
+::selection {
+  background: var(--purple);
+  color: var(--white);
+}
