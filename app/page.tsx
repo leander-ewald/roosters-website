@@ -3,93 +3,34 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NEWS as ALL_NEWS } from "@/lib/data";
+import { NEWS as ALL_NEWS, SCHEDULE, DEL_TABLE } from "@/lib/data";
 
-const NEXT_GAME = {
-  home: { name: "Iserlohn Roosters", short: "IR" },
-  away: { name: "Augsburger Panther", short: "AP" },
-  date: "So. 01.03.2026",
-  time: "14:00 Uhr",
-  venue: "Eissporthalle am Seilersee",
-  ticketUrl: "https://tickets.iec.de/",
-  info: "Fast ausverkauft — nur noch 600 Tickets bis zum Rekord!",
-};
+/* ── static data ── */
+const LAST_GAME = (() => {
+  const past = SCHEDULE.filter((g) => g.homeScore !== undefined).reverse();
+  return past[0] || null;
+})();
 
-const NEWS = ALL_NEWS.slice(0, 4);
+const NEXT_GAME = (() => {
+  const future = SCHEDULE.filter((g) => g.homeScore === undefined);
+  return future[0] || null;
+})();
+
+const COMING_GAME = (() => {
+  const future = SCHEDULE.filter((g) => g.homeScore === undefined);
+  return future[1] || null;
+})();
+
+const NEWS = ALL_NEWS.slice(0, 5);
+const FEATURED = NEWS[0];
+const SIDE_NEWS = NEWS.slice(1, 5);
+
+const ROOSTERS_STANDING = DEL_TABLE.find((t) => t.team.includes("Iserlohn"));
 
 const SPONSORS = [
-  "Raab Karcher",
-  "Märkische Bank",
-  "Krombacher",
-  "Böhm Kabel",
-  "Kirchhoff Gruppe",
-  "Stadtwerke Iserlohn",
-  "Huckschlag Transporte",
-  "Platzmann Federn",
-  "J.D. von Hagen AG",
-];
-
-const QUICK_LINKS = [
-  {
-    label: "Ticketshop",
-    href: "https://tickets.iec.de/",
-    external: true,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Fanshop",
-    href: "https://shop.iec.de/",
-    external: true,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Spielplan",
-    href: "/spielplan",
-    external: false,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Tabelle",
-    href: "/tabelle",
-    external: false,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Kader",
-    href: "/team/kader",
-    external: false,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-      </svg>
-    ),
-  },
-  {
-    label: "Newsletter",
-    href: "/fanzone/newsletter",
-    external: false,
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
+  "Raab Karcher", "Märkische Bank", "Krombacher", "Böhm Kabel",
+  "Kirchhoff Gruppe", "Stadtwerke Iserlohn", "Huckschlag Transporte",
+  "Platzmann Federn", "J.D. von Hagen AG",
 ];
 
 export default function Home() {
@@ -102,13 +43,10 @@ export default function Home() {
             const el = entry.target as HTMLElement;
             const target = parseInt(el.dataset.count || "0");
             let current = 0;
-            const increment = Math.ceil(target / 40);
+            const inc = Math.ceil(target / 40);
             const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                current = target;
-                clearInterval(timer);
-              }
+              current += inc;
+              if (current >= target) { current = target; clearInterval(timer); }
               el.textContent = current.toLocaleString("de-DE");
             }, 30);
             observer.unobserve(el);
@@ -124,288 +62,268 @@ export default function Home() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 bg-primary" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark via-primary to-primary-light opacity-80" />
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-primary to-transparent" />
+      <section className="relative bg-primary overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary-light)_0%,_transparent_60%)] opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary" />
 
-        <div className="relative z-10 container py-24 md:py-32">
-          <div className="flex flex-col items-center text-center">
-            <Image
-              src="/roosters-logo-white.png"
-              alt="Iserlohn Roosters"
-              width={280}
-              height={80}
-              className="h-16 md:h-20 w-auto mb-8 opacity-90"
-              priority
-            />
-
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
-              <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-              <span className="text-white/80 text-xs font-bold uppercase tracking-widest">
-                DEL Saison 2025/26
-              </span>
-            </div>
-
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.9] text-white mb-6">
-              Eishockey
-              <br />
-              <span className="text-accent">am Seilersee</span>
-            </h1>
-
-            <p className="text-white/60 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-              Leidenschaft, Tradition und Kampfgeist &mdash; seit 1959.
-              Willkommen bei den Iserlohn Roosters.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="https://tickets.iec.de/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary text-base px-8 py-4"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" /></svg>
-                Tickets sichern
-              </a>
-              <a
-                href="https://shop.iec.de/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline text-base px-8 py-4"
-              >
-                Fanshop
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
-      </section>
-
-      {/* ═══ NEXT GAME ═══ */}
-      <section className="relative -mt-16 z-20 pb-8">
-        <div className="container">
-          <div className="bg-white rounded-lg shadow-2xl border border-gray-100 overflow-hidden max-w-4xl mx-auto">
-            <div className="bg-primary px-6 py-3 flex items-center justify-between">
-              <p className="text-xs font-bold uppercase tracking-[0.15em] text-accent">
-                Nächstes Spiel
+        <div className="relative z-10 container">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 py-16 md:py-24 lg:py-28">
+            {/* Left: Text */}
+            <div className="flex-1 text-center lg:text-left">
+              <Image
+                src="/roosters-logo-white.png"
+                alt="Iserlohn Roosters"
+                width={200}
+                height={56}
+                className="h-10 md:h-12 w-auto mb-6 mx-auto lg:mx-0 opacity-80"
+                priority
+              />
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-5">
+                Eishockey<br />
+                <span className="text-accent">am Seilersee</span>
+              </h1>
+              <p className="text-white/50 text-base md:text-lg max-w-md mb-8 mx-auto lg:mx-0 leading-relaxed">
+                Leidenschaft, Tradition und Kampfgeist — seit 1959. Willkommen bei den Iserlohn Roosters.
               </p>
-              <span className="text-xs text-white/60 font-medium">
-                {NEXT_GAME.venue}
-              </span>
-            </div>
-
-            <div className="p-6 md:p-8">
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex-1 text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-primary rounded-lg flex items-center justify-center mb-3 mx-auto">
-                    <Image src="/roosters-logo-white.png" alt="IR" width={48} height={48} className="h-10 md:h-12 w-auto" />
-                  </div>
-                  <p className="font-bold text-sm md:text-base uppercase tracking-wide">
-                    {NEXT_GAME.home.name}
-                  </p>
-                </div>
-
-                <div className="text-center px-4 md:px-8">
-                  <p className="text-sm text-gray-400 font-medium mb-1">{NEXT_GAME.date}</p>
-                  <p className="text-3xl md:text-5xl font-black text-primary leading-none">VS</p>
-                  <p className="text-sm font-bold text-primary mt-1">{NEXT_GAME.time}</p>
-                </div>
-
-                <div className="flex-1 text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-lg flex items-center justify-center mb-3 mx-auto">
-                    <span className="text-gray-500 font-black text-xl md:text-2xl">
-                      {NEXT_GAME.away.short}
-                    </span>
-                  </div>
-                  <p className="font-bold text-sm md:text-base uppercase tracking-wide">
-                    {NEXT_GAME.away.name}
-                  </p>
-                </div>
-              </div>
-
-              {NEXT_GAME.info && (
-                <p className="text-center text-sm text-cta font-semibold mt-4">{NEXT_GAME.info}</p>
-              )}
-
-              <div className="mt-6 text-center">
-                <a
-                  href={NEXT_GAME.ticketUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary"
-                >
-                  Tickets kaufen
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="btn btn-primary px-8 py-4">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" /></svg>
+                  Tickets sichern
                 </a>
+                <Link href="/spielplan" className="btn btn-outline px-8 py-4">Spielplan ansehen</Link>
               </div>
             </div>
+
+            {/* Right: Next Game Card */}
+            {NEXT_GAME && (
+              <div className="w-full max-w-sm lg:max-w-xs flex-shrink-0">
+                <div className="bg-white/5 backdrop-blur border border-white/10 rounded-lg overflow-hidden">
+                  <div className="bg-cta px-4 py-2 flex items-center justify-between">
+                    <span className="text-white text-[10px] font-bold uppercase tracking-widest">Nächstes Heimspiel</span>
+                    <svg className="w-3 h-3 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  </div>
+                  <div className="p-5 text-center">
+                    <p className="text-white/40 text-xs font-medium mb-3">{NEXT_GAME.date} — {NEXT_GAME.time}</p>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="flex-1">
+                        <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <Image src="/roosters-logo-white.png" alt="IR" width={36} height={36} className="h-8 w-auto" />
+                        </div>
+                        <p className="text-white text-[11px] font-bold uppercase">{NEXT_GAME.home}</p>
+                      </div>
+                      <span className="text-white/30 text-2xl font-black">VS</span>
+                      <div className="flex-1">
+                        <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                          <span className="text-white/50 font-black text-lg">{NEXT_GAME.away.substring(0, 3).toUpperCase()}</span>
+                        </div>
+                        <p className="text-white text-[11px] font-bold uppercase">{NEXT_GAME.away}</p>
+                      </div>
+                    </div>
+                    <p className="text-white/30 text-[11px] mb-4">{NEXT_GAME.venue}</p>
+                    <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="btn btn-primary w-full text-xs py-2.5">
+                      Tickets kaufen
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      {/* ═══ NEWS ═══ */}
-      <section className="section">
+      {/* ═══ GAME CENTRE — Belfast-style 3-game bar ═══ */}
+      <section className="bg-dark">
         <div className="container">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">
-                Aktuelles
-              </p>
-              <h2 className="section-title mb-0">Neuigkeiten</h2>
-            </div>
-            <Link
-              href="/news"
-              className="hidden md:inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-wider hover:text-accent transition-colors"
-            >
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+            {[
+              { label: "Letztes Spiel", game: LAST_GAME, type: "result" as const },
+              { label: "Nächstes Spiel", game: NEXT_GAME, type: "upcoming" as const },
+              { label: "Demnächst", game: COMING_GAME, type: "upcoming" as const },
+            ].map(({ label, game, type }) => (
+              <div key={label} className="py-5 px-4 md:px-6 text-center">
+                <p className="text-accent text-[10px] font-bold uppercase tracking-widest mb-3">{label}</p>
+                {game ? (
+                  <>
+                    <div className="flex items-center justify-center gap-4 mb-2">
+                      <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.home}</span>
+                      <span className={`text-lg font-black min-w-[60px] ${type === "result" ? "text-white" : "text-white/30"}`}>
+                        {type === "result" && game.homeScore !== undefined ? `${game.homeScore}:${game.awayScore}` : "VS"}
+                      </span>
+                      <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.away}</span>
+                    </div>
+                    <p className="text-white/30 text-[11px]">{game.date}, {game.time}</p>
+                    <div className="mt-3">
+                      {type === "result" ? (
+                        <Link href="/spielplan" className="text-accent text-[11px] font-semibold uppercase tracking-wider hover:text-accent-light transition-colors">Spielbericht</Link>
+                      ) : (
+                        <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="text-cta text-[11px] font-semibold uppercase tracking-wider hover:text-white transition-colors">Tickets</a>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-white/20 text-sm">Kein Spiel geplant</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ NEWS — Featured + sidebar ═══ */}
+      <section className="section bg-white">
+        <div className="container">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="section-title mb-0">Neuigkeiten</h2>
+            <Link href="/news" className="btn btn-ghost text-xs">
               Alle News
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {NEWS.map((article, i) => (
-              <Link href={`/news/${article.id}`} key={article.id} className={`group ${i === 0 ? "md:col-span-2" : ""}`}>
-                <article className="card h-full flex flex-col">
-                  <div className={`relative overflow-hidden ${i === 0 ? 'aspect-[16/8]' : 'aspect-[16/10]'}`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary-light" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <span className="absolute top-3 left-3 bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                      {article.category}
-                    </span>
+          <div className="grid lg:grid-cols-5 gap-6">
+            {/* Featured article */}
+            {FEATURED && (
+              <Link href={`/news/${FEATURED.id}`} className="lg:col-span-3 group">
+                <div className="relative rounded-lg overflow-hidden aspect-[16/9] bg-gradient-to-br from-primary to-primary-light">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span className="inline-block bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3">{FEATURED.category}</span>
+                    <h3 className="text-white text-xl md:text-2xl font-bold uppercase leading-tight mb-2 group-hover:text-accent transition-colors">{FEATURED.title}</h3>
+                    <p className="text-white/50 text-sm line-clamp-2">{FEATURED.excerpt}</p>
+                    <p className="text-white/30 text-xs mt-3">{FEATURED.date}</p>
                   </div>
-                  <div className="p-5 flex-1 flex flex-col">
-                    <span className="text-xs text-gray-400 mb-2">{article.date}</span>
-                    <h3 className="font-bold text-base uppercase leading-tight mb-2 group-hover:text-accent transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-gray-500 text-sm line-clamp-2 mt-auto">
-                      {article.excerpt}
-                    </p>
+                </div>
+              </Link>
+            )}
+
+            {/* Side articles */}
+            <div className="lg:col-span-2 flex flex-col gap-1">
+              {SIDE_NEWS.map((article) => (
+                <Link key={article.id} href={`/news/${article.id}`} className="group flex gap-4 p-3 rounded hover:bg-gray-50 transition-colors">
+                  <div className="w-20 h-14 flex-shrink-0 rounded bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                    <span className="text-primary/20 text-[10px] font-bold uppercase">{article.category.substring(0, 4)}</span>
                   </div>
-                </article>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-sm font-bold leading-tight line-clamp-2 group-hover:text-accent transition-colors">{article.title}</h4>
+                    <p className="text-gray-400 text-[11px] mt-1">{article.date}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ QUICK LINKS — 3 promo boxes like Belfast ═══ */}
+      <section className="bg-off-white py-4">
+        <div className="container">
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { title: "Spielplan & Ergebnisse", desc: "Alle Spiele der DEL Saison 2025/26", href: "/spielplan", icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" },
+              { title: "Kader & Team", desc: "Spieler, Trainer und Organisation", href: "/team/kader", icon: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" },
+              { title: "Mitglied werden", desc: "Werde Teil der Roosters-Familie", href: "/verein/mitgliedschaft", icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" },
+            ].map((item) => (
+              <Link key={item.title} href={item.href} className="group bg-primary rounded-lg p-6 flex items-start gap-4 hover:bg-primary-light transition-colors">
+                <div className="w-10 h-10 rounded bg-white/10 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
+                </div>
+                <div>
+                  <h3 className="text-white text-sm font-bold uppercase tracking-wide mb-1 group-hover:text-accent transition-colors">{item.title}</h3>
+                  <p className="text-white/40 text-xs">{item.desc}</p>
+                </div>
               </Link>
             ))}
           </div>
-
-          <div className="mt-8 text-center md:hidden">
-            <Link href="/news" className="btn btn-secondary">
-              Alle News
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* ═══ QUICK LINKS ═══ */}
-      <section className="bg-gray-50 py-12">
+      {/* ═══ TABLE SNAPSHOT + STATS ═══ */}
+      <section className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {QUICK_LINKS.map((link) => {
-              const Tag = link.external ? "a" : Link;
-              const extraProps = link.external
-                ? { target: "_blank" as const, rel: "noopener noreferrer" }
-                : {};
-              return (
-                <Tag
-                  key={link.label}
-                  href={link.href}
-                  {...extraProps}
-                  className="bg-white rounded-xl p-5 text-center shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group"
-                >
-                  <span className="flex justify-center mb-3 text-primary group-hover:text-accent transition-colors">
-                    {link.icon}
-                  </span>
-                  <span className="text-sm font-bold uppercase tracking-wider text-primary group-hover:text-accent transition-colors">
-                    {link.label}
-                  </span>
-                </Tag>
-              );
-            })}
+          <div className="grid lg:grid-cols-2 gap-10">
+            {/* Mini table */}
+            <div>
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="section-title mb-0 text-xl">DEL Tabelle</h2>
+                <Link href="/tabelle" className="text-accent text-xs font-bold uppercase tracking-wider hover:text-primary transition-colors">Vollständig</Link>
+              </div>
+              <div className="border border-gray-100 rounded-lg overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="bg-gray-50 text-gray-500 text-[11px] uppercase tracking-wider">
+                      <th className="text-left py-2.5 px-3 font-semibold">#</th>
+                      <th className="text-left py-2.5 px-3 font-semibold">Team</th>
+                      <th className="text-center py-2.5 px-3 font-semibold">Sp</th>
+                      <th className="text-center py-2.5 px-3 font-semibold">Pkt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {DEL_TABLE.slice(0, 8).map((team) => {
+                      const isRoosters = team.team.includes("Iserlohn");
+                      return (
+                        <tr key={team.rank} className={`border-t border-gray-50 ${isRoosters ? "bg-accent/5 font-bold" : ""}`}>
+                          <td className="py-2.5 px-3 text-gray-400 text-xs">{team.rank}</td>
+                          <td className={`py-2.5 px-3 ${isRoosters ? "text-primary" : ""}`}>{team.team}</td>
+                          <td className="py-2.5 px-3 text-center text-gray-500">{team.gp}</td>
+                          <td className="py-2.5 px-3 text-center font-bold">{team.pts}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div>
+              <h2 className="section-title mb-6 text-xl">Saison in Zahlen</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { value: 1959, label: "Gegründet", suffix: "" },
+                  { value: ROOSTERS_STANDING?.gp || 45, label: "Gespielte Spiele", suffix: "" },
+                  { value: ROOSTERS_STANDING?.pts || 49, label: "Punkte", suffix: "" },
+                  { value: 4500, label: "Fans / Heimspiel", suffix: "+" },
+                ].map((stat) => (
+                  <div key={stat.label} className="bg-primary rounded-lg p-5 text-center">
+                    <p className="text-2xl md:text-3xl font-black text-accent leading-none mb-1">
+                      <span data-count={stat.value}>0</span>{stat.suffix}
+                    </p>
+                    <p className="text-white/40 text-[11px] font-medium uppercase tracking-wider">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ STATS / IMPACT ═══ */}
-      <section className="bg-primary py-16 relative overflow-hidden">
-        <div className="container relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: 1959, label: "Gegründet", suffix: "" },
-              { value: 52, label: "DEL Spielzeiten", suffix: "" },
-              { value: 4500, label: "Fans pro Heimspiel", suffix: "+" },
-              { value: 27, label: "Spieler im Kader", suffix: "" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-3xl md:text-5xl font-black text-accent leading-none mb-2">
-                  <span data-count={stat.value}>0</span>
-                  {stat.suffix}
-                </p>
-                <p className="text-white/50 text-sm font-medium uppercase tracking-wider">
-                  {stat.label}
-                </p>
+      {/* ═══ SPONSORS ═══ */}
+      <section className="py-10 bg-off-white border-t border-gray-100">
+        <div className="container">
+          <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Hauptsponsoren</p>
+          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
+            {SPONSORS.map((name) => (
+              <div key={name} className="flex items-center justify-center h-14 px-6 bg-white border border-gray-100 rounded text-gray-400 text-xs font-bold uppercase tracking-wider hover:text-primary hover:border-gray-300 transition-colors cursor-pointer">
+                {name}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ SPONSORS MARQUEE ═══ */}
-      <section className="py-12 bg-white overflow-hidden">
-        <div className="container mb-8">
-          <p className="text-center text-xs font-bold uppercase tracking-[0.15em] text-gray-400">
-            Unsere Hauptsponsoren
-          </p>
-        </div>
-        <div className="relative">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[...SPONSORS, ...SPONSORS].map((name, i) => (
-              <span
-                key={`${name}-${i}`}
-                className="inline-flex items-center justify-center px-8 py-4 mx-2 bg-gray-50 border border-gray-100 rounded text-gray-500 hover:text-primary font-bold text-sm uppercase tracking-wider transition-colors cursor-pointer"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ MEMBERSHIP CTA ═══ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-light to-primary" />
-        <div className="container relative z-10 text-center text-white">
-          <Image
-            src="/roosters-logo-white.png"
-            alt="Roosters"
-            width={120}
-            height={34}
-            className="h-8 w-auto mx-auto mb-6 opacity-60"
-          />
-          <h2 className="text-3xl md:text-5xl font-black uppercase mb-4 leading-tight">
-            Werde Teil der
-            <br />
-            <span className="text-accent">Roosters-Familie</span>
+      {/* ═══ CTA ═══ */}
+      <section className="bg-primary py-16 md:py-20">
+        <div className="container text-center">
+          <Image src="/roosters-logo-white.png" alt="Roosters" width={120} height={34} className="h-8 w-auto mx-auto mb-5 opacity-40" />
+          <h2 className="text-2xl md:text-4xl font-black uppercase text-white mb-3 leading-tight">
+            Werde Teil der <span className="text-accent">Roosters-Familie</span>
           </h2>
-          <p className="text-white/60 max-w-lg mx-auto mb-10 text-lg">
-            Sichere dir deine Dauerkarte, werde Mitglied oder unterstütze uns
-            als Sponsor. Gemeinsam sind wir stärker.
+          <p className="text-white/40 max-w-md mx-auto mb-8 text-sm">
+            Sichere dir deine Dauerkarte, werde Mitglied oder unterstütze uns als Sponsor.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/verein/mitgliedschaft" className="btn btn-accent text-base px-8 py-4">
-              Mitglied werden
-            </Link>
-            <Link href="/sponsoring" className="btn btn-outline text-base px-8 py-4">
-              Sponsor werden
-            </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/verein/mitgliedschaft" className="btn btn-accent px-8 py-3.5">Mitglied werden</Link>
+            <Link href="/sponsoring" className="btn btn-outline px-8 py-3.5">Sponsor werden</Link>
           </div>
         </div>
       </section>
