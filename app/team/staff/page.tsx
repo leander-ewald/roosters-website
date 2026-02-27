@@ -12,10 +12,23 @@ const CATEGORY_LABELS: Record<string, string> = {
   equipment: "Equipment & Betreuung",
 };
 
-const CATEGORY_ICONS: Record<string, string> = {
-  coaching: "🏒",
-  medical: "⚕️",
-  equipment: "🔧",
+const CATEGORY_ICONS: Record<string, React.ReactNode> = {
+  coaching: (
+    <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+    </svg>
+  ),
+  medical: (
+    <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+    </svg>
+  ),
+  equipment: (
+    <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+  ),
 };
 
 export default function StaffPage() {
@@ -28,9 +41,9 @@ export default function StaffPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">
             Team
           </p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">
@@ -45,8 +58,8 @@ export default function StaffPage() {
           {Object.entries(grouped).map(([category, members]) => (
             <div key={category} className="mb-12">
               <div className="flex items-center gap-3 mb-6">
-                <span className="text-2xl">{CATEGORY_ICONS[category]}</span>
-                <h2 className="text-xl font-black uppercase text-navy">
+                {CATEGORY_ICONS[category]}
+                <h2 className="text-xl font-black uppercase text-primary">
                   {CATEGORY_LABELS[category]}
                 </h2>
               </div>
@@ -56,8 +69,8 @@ export default function StaffPage() {
                     key={member.name}
                     className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                   >
-                    <div className="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-3">
-                      <span className="text-gold font-black text-lg">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-3">
+                      <span className="text-accent font-black text-lg">
                         {member.name.split(" ").map(n => n[0]).join("")}
                       </span>
                     </div>

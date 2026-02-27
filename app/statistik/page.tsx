@@ -10,9 +10,9 @@ export default function StatistikPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">
             Saison 2025/26
           </p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">
@@ -29,7 +29,7 @@ export default function StatistikPage() {
           <div className="overflow-x-auto">
             <table className="w-full min-w-[600px]">
               <thead>
-                <tr className="border-b-2 border-navy">
+                <tr className="border-b-2 border-primary">
                   <th className="text-left py-3 px-3 text-xs font-bold uppercase tracking-wider text-gray-400 w-12">#</th>
                   <th className="text-left py-3 px-3 text-xs font-bold uppercase tracking-wider text-gray-400">Spieler</th>
                   <th className="text-center py-3 px-2 text-xs font-bold uppercase tracking-wider text-gray-400">Pos</th>
@@ -45,13 +45,13 @@ export default function StatistikPage() {
                   <tr
                     key={player.name}
                     className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${
-                      i < 3 ? "bg-gold/5" : ""
+                      i < 3 ? "bg-accent/5" : ""
                     }`}
                   >
                     <td className="py-3 px-3">
                       <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full text-xs font-bold ${
                         i === 0
-                          ? "bg-gold text-navy"
+                          ? "bg-accent text-primary"
                           : i === 1
                           ? "bg-gray-300 text-gray-700"
                           : i === 2
@@ -63,8 +63,8 @@ export default function StatistikPage() {
                     </td>
                     <td className="py-3 px-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-navy rounded-lg flex items-center justify-center shrink-0">
-                          <span className="text-gold font-black text-sm">#{player.number}</span>
+                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shrink-0">
+                          <span className="text-accent font-black text-sm">#{player.number}</span>
                         </div>
                         <span className="font-bold text-sm">{player.name}</span>
                       </div>
@@ -72,17 +72,17 @@ export default function StatistikPage() {
                     <td className="text-center py-3 px-2">
                       <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${
                         player.position === "VT"
-                          ? "bg-blue/10 text-blue"
-                          : "bg-navy/10 text-navy"
+                          ? "bg-primary-light/10 text-primary-light"
+                          : "bg-primary/10 text-primary"
                       }`}>
                         {player.position}
                       </span>
                     </td>
                     <td className="text-center py-3 px-2 text-sm text-gray-600">{player.gp}</td>
-                    <td className="text-center py-3 px-2 text-sm font-bold text-red">{player.goals}</td>
-                    <td className="text-center py-3 px-2 text-sm font-bold text-blue">{player.assists}</td>
+                    <td className="text-center py-3 px-2 text-sm font-bold text-cta">{player.goals}</td>
+                    <td className="text-center py-3 px-2 text-sm font-bold text-primary-light">{player.assists}</td>
                     <td className="text-center py-3 px-3">
-                      <span className="text-lg font-black text-navy">{player.points}</span>
+                      <span className="text-lg font-black text-primary">{player.points}</span>
                     </td>
                     <td className="text-center py-3 px-2 text-sm text-gray-400">{player.pim}</td>
                   </tr>
@@ -101,8 +101,8 @@ export default function StatistikPage() {
             {GOALIE_STATS.map((goalie) => (
               <div key={goalie.name} className="card p-6">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 bg-navy rounded-xl flex items-center justify-center">
-                    <span className="text-gold font-black text-lg">#{goalie.number}</span>
+                  <div className="w-14 h-14 bg-primary rounded-xl flex items-center justify-center">
+                    <span className="text-accent font-black text-lg">#{goalie.number}</span>
                   </div>
                   <div>
                     <h3 className="font-bold text-lg uppercase">{goalie.name}</h3>
@@ -119,7 +119,7 @@ export default function StatistikPage() {
                     { label: "Shutouts", value: goalie.so },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
-                      <p className="text-xl font-black text-navy">{stat.value}</p>
+                      <p className="text-xl font-black text-primary">{stat.value}</p>
                       <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">
                         {stat.label}
                       </p>

@@ -8,10 +8,10 @@ type Position = "Alle" | "Torwart" | "Verteidiger" | "Stürmer";
 
 const POSITIONS: Position[] = ["Alle", "Torwart", "Verteidiger", "Stürmer"];
 const POS_BADGE = {
-  Alle: "bg-navy text-white",
-  Torwart: "bg-gold text-navy",
-  Verteidiger: "bg-blue text-white",
-  Stürmer: "bg-red text-white",
+  Alle: "bg-primary text-white",
+  Torwart: "bg-accent text-primary",
+  Verteidiger: "bg-primary-light text-white",
+  Stürmer: "bg-cta text-white",
 };
 
 export default function KaderPage() {
@@ -24,9 +24,9 @@ export default function KaderPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">
             Team
           </p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">

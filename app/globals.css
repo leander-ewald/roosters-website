@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #002652;
-  --navy-dark: #001a3a;
-  --blue: #1a3c85;
-  --purple: #621979;
-  --red: #E32B2B;
-  --gold: #FFD737;
+  --primary: #0C2753;
+  --primary-dark: #071C3E;
+  --primary-light: #1A3F7A;
+  --accent: #4A8FE7;
   --white: #ffffff;
+  --cta: #C8102E;
+  --cta-hover: #A80D24;
   --gray-50: #f9fafb;
   --gray-100: #f4f4f4;
   --gray-200: #e5e7eb;
@@ -21,12 +21,12 @@
 }
 
 @theme inline {
-  --color-navy: var(--navy);
-  --color-navy-dark: var(--navy-dark);
-  --color-blue: var(--blue);
-  --color-purple: var(--purple);
-  --color-red: var(--red);
-  --color-gold: var(--gold);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
   --color-gray-50: var(--gray-50);
   --color-gray-100: var(--gray-100);
   --color-gray-200: var(--gray-200);
@@ -81,21 +81,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-  background: var(--red);
+  background: var(--cta);
   color: var(--white);
 }
 .btn-primary:hover {
-  background: #c72424;
+  background: var(--cta-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(227, 43, 43, 0.3);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.3);
 }
 
 .btn-secondary {
-  background: var(--navy);
+  background: var(--primary);
   color: var(--white);
 }
 .btn-secondary:hover {
-  background: var(--blue);
+  background: var(--primary-light);
   transform: translateY(-1px);
 }
 
@@ -106,15 +106,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .btn-outline:hover {
   background: var(--white);
-  color: var(--navy);
+  color: var(--primary);
 }
 
-.btn-gold {
-  background: var(--gold);
-  color: var(--navy);
+.btn-accent {
+  background: var(--accent);
+  color: var(--white);
 }
-.btn-gold:hover {
-  background: #e6c230;
+.btn-accent:hover {
+  background: #3A7FD7;
   transform: translateY(-1px);
 }
 
@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
   font-size: 2rem;
-  color: var(--navy);
+  color: var(--primary);
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -176,16 +176,16 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--gray-100);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--navy);
+  background: var(--primary);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--blue);
+  background: var(--primary-light);
 }
 
 /* === Selection === */
 ::selection {
-  background: var(--purple);
+  background: var(--accent);
   color: var(--white);
 }
 
@@ -205,4 +205,16 @@ h1, h2, h3, h4, h5, h6 {
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
+}
+
+/* === Sponsor Marquee === */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

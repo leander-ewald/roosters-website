@@ -16,9 +16,9 @@ export default function OrganisationPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">
             Team
           </p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">
@@ -33,7 +33,7 @@ export default function OrganisationPage() {
         <div className="container max-w-4xl">
           {Object.entries(grouped).map(([department, members]) => (
             <div key={department} className="mb-10">
-              <h2 className="text-lg font-black uppercase text-navy mb-4 border-b-2 border-navy pb-2">
+              <h2 className="text-lg font-black uppercase text-primary mb-4 border-b-2 border-primary pb-2">
                 {department}
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -42,8 +42,8 @@ export default function OrganisationPage() {
                     key={member.name}
                     className="flex items-center gap-4 bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-navy to-purple rounded-xl flex items-center justify-center shrink-0">
-                      <span className="text-gold font-black text-xl">
+                    <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shrink-0">
+                      <span className="text-accent font-black text-xl">
                         {member.name.split(" ").map(n => n[0]).join("")}
                       </span>
                     </div>
@@ -58,7 +58,7 @@ export default function OrganisationPage() {
           ))}
 
           {/* Contact */}
-          <div className="mt-12 bg-navy rounded-2xl p-8 text-white">
+          <div className="mt-12 bg-primary rounded-2xl p-8 text-white">
             <h2 className="text-xl font-black uppercase mb-4">Geschäftsstelle</h2>
             <div className="grid sm:grid-cols-2 gap-6 text-white/70 text-sm">
               <div>

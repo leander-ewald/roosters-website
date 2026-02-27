@@ -33,9 +33,9 @@ const SPONSOR_TIERS = [
 export default function PartnerPage() {
   return (
     <>
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Sponsoring</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">Sponsoring</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Unsere Partner</h1>
         </div>
       </section>
@@ -44,7 +44,7 @@ export default function PartnerPage() {
         <div className="container max-w-4xl">
           {SPONSOR_TIERS.map((tier) => (
             <div key={tier.tier} className="mb-12">
-              <h2 className="text-xl font-black uppercase text-navy mb-6 border-b-2 border-navy pb-2">
+              <h2 className="text-xl font-black uppercase text-primary mb-6 border-b-2 border-primary pb-2">
                 {tier.tier}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -59,7 +59,7 @@ export default function PartnerPage() {
                     <div className="w-16 h-16 bg-gray-100 rounded-xl mx-auto mb-3 flex items-center justify-center">
                       <span className="text-gray-400 font-bold text-xs uppercase">{s.name.split(" ")[0]}</span>
                     </div>
-                    <p className="font-bold text-sm uppercase text-navy group-hover:text-purple transition-colors">
+                    <p className="font-bold text-sm uppercase text-primary group-hover:text-accent transition-colors">
                       {s.name}
                     </p>
                   </a>

@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 export default function EhrenamtPage() {
   return (
     <>
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Fanzone</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">Fanzone</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Ehrenamt</h1>
         </div>
       </section>
@@ -24,7 +24,7 @@ export default function EhrenamtPage() {
           <div className="grid sm:grid-cols-2 gap-4 mb-8">
             {["Einlass & Ordnung", "Gastronomie-Support", "Merchandising-Verkauf", "Event-Organisation", "Kids Club Betreuung", "Social Media Unterstützung"].map((task) => (
               <div key={task} className="bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3">
-                <span className="w-8 h-8 bg-gold/20 rounded-lg flex items-center justify-center text-gold">✓</span>
+                <span className="w-8 h-8 bg-accent/20 rounded-lg flex items-center justify-center text-accent">✓</span>
                 <span className="font-medium text-sm">{task}</span>
               </div>
             ))}

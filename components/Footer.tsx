@@ -2,15 +2,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 const SPONSORS = [
-  { name: "Raab Karcher", url: "https://raabkarcher.de" },
-  { name: "Märkische Bank", url: "https://maerkische-bank.de" },
-  { name: "Krombacher", url: "https://krombacher.de" },
-  { name: "Böhm Kabel", url: "https://boehm-kabel.de" },
-  { name: "Kirchhoff Gruppe", url: "https://kirchhoff-gruppe.de" },
-  { name: "Stadtwerke Iserlohn", url: "https://stadtwerke-iserlohn.de" },
-  { name: "Huckschlag Transporte", url: "https://huckschlag-transporte.de" },
-  { name: "Platzmann Federn", url: "https://platzmann.de" },
-  { name: "J.D. von Hagen AG", url: "https://jdvonhagen.de" },
+  { name: "Raab Karcher", url: "https://raabkarcher.de", initials: "RK" },
+  { name: "Märkische Bank", url: "https://maerkische-bank.de", initials: "MB" },
+  { name: "Krombacher", url: "https://krombacher.de", initials: "K" },
+  { name: "Böhm Kabel", url: "https://boehm-kabel.de", initials: "BK" },
+  { name: "Kirchhoff Gruppe", url: "https://kirchhoff-gruppe.de", initials: "KG" },
+  { name: "Stadtwerke Iserlohn", url: "https://stadtwerke-iserlohn.de", initials: "SW" },
+  { name: "Huckschlag Transporte", url: "https://huckschlag-transporte.de", initials: "HT" },
+  { name: "Platzmann Federn", url: "https://platzmann.de", initials: "PF" },
+  { name: "J.D. von Hagen AG", url: "https://jdvonhagen.de", initials: "JH" },
 ];
 
 const FOOTER_LINKS = {
@@ -49,23 +49,26 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white">
+    <footer className="bg-primary text-white">
       {/* Sponsors */}
-      <div className="border-b border-white/10 py-8">
+      <div className="border-b border-white/10 py-10">
         <div className="container">
-          <p className="text-center text-xs uppercase tracking-widest text-white/40 mb-6 font-bold">
+          <p className="text-center text-xs uppercase tracking-widest text-white/40 mb-8 font-bold">
             Hauptsponsoren
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
             {SPONSORS.map((s) => (
               <a
                 key={s.name}
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/40 hover:text-white/80 text-xs font-semibold uppercase tracking-wider transition-colors"
+                className="group flex items-center justify-center w-[120px] h-[60px] md:w-[140px] md:h-[70px] bg-white/5 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                title={s.name}
               >
-                {s.name}
+                <span className="text-white/50 group-hover:text-white text-xs font-bold uppercase tracking-wider text-center leading-tight px-2 transition-colors">
+                  {s.name}
+                </span>
               </a>
             ))}
           </div>
@@ -77,12 +80,13 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="inline-block relative w-16 h-16 mb-4">
+            <Link href="/" className="inline-block mb-4">
               <Image
-                src="/logo.png"
+                src="/roosters-logo-white.png"
                 alt="Iserlohn Roosters"
-                fill
-                className="object-contain"
+                width={140}
+                height={40}
+                className="h-10 w-auto"
               />
             </Link>
             <p className="text-white/50 text-sm leading-relaxed">
@@ -95,7 +99,7 @@ export default function Footer() {
           {/* Link Columns */}
           {Object.entries(FOOTER_LINKS).map(([title, links]) => (
             <div key={title}>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-gold mb-4">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-accent mb-4">
                 {title === "fans" ? "Fans & Partner" : title.charAt(0).toUpperCase() + title.slice(1)}
               </h4>
               <ul className="space-y-2.5">
@@ -130,7 +134,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.label}
-                className="text-white/40 hover:text-gold transition-colors"
+                className="text-white/40 hover:text-accent transition-colors"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                   <path d={s.icon} />

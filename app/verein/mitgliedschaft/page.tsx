@@ -33,9 +33,9 @@ const PLANS = [
 export default function MitgliedschaftPage() {
   return (
     <>
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Verein</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">Verein</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Mitgliedschaft</h1>
           <p className="text-white/50 mt-2">Werde Teil der Roosters-Familie</p>
         </div>
@@ -45,26 +45,26 @@ export default function MitgliedschaftPage() {
         <div className="container">
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PLANS.map((plan) => (
-              <div key={plan.name} className={`rounded-2xl p-6 ${plan.highlighted ? "bg-navy text-white ring-2 ring-gold scale-105" : "bg-white border border-gray-200"}`}>
+              <div key={plan.name} className={`rounded-2xl p-6 ${plan.highlighted ? "bg-primary text-white ring-2 ring-gold scale-105" : "bg-white border border-gray-200"}`}>
                 {plan.highlighted && (
-                  <span className="inline-block bg-gold text-navy text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Beliebt</span>
+                  <span className="inline-block bg-accent text-primary text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Beliebt</span>
                 )}
-                <h3 className={`font-bold text-lg uppercase mb-2 ${plan.highlighted ? "text-white" : "text-navy"}`}>{plan.name}</h3>
+                <h3 className={`font-bold text-lg uppercase mb-2 ${plan.highlighted ? "text-white" : "text-primary"}`}>{plan.name}</h3>
                 <div className="mb-6">
-                  <span className={`text-4xl font-black ${plan.highlighted ? "text-gold" : "text-navy"}`}>{plan.price}€</span>
+                  <span className={`text-4xl font-black ${plan.highlighted ? "text-accent" : "text-primary"}`}>{plan.price}€</span>
                   <span className={`text-sm ml-1 ${plan.highlighted ? "text-white/50" : "text-gray-400"}`}>/{plan.period}</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((f) => (
                     <li key={f} className={`flex items-start gap-2 text-sm ${plan.highlighted ? "text-white/80" : "text-gray-600"}`}>
-                      <svg className={`w-4 h-4 mt-0.5 shrink-0 ${plan.highlighted ? "text-gold" : "text-green-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-4 h-4 mt-0.5 shrink-0 ${plan.highlighted ? "text-accent" : "text-green-500"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {f}
                     </li>
                   ))}
                 </ul>
-                <Link href="/kontakt" className={`btn w-full ${plan.highlighted ? "btn-gold" : "btn-primary"}`}>
+                <Link href="/kontakt" className={`btn w-full ${plan.highlighted ? "btn-accent" : "btn-primary"}`}>
                   Mitglied werden
                 </Link>
               </div>

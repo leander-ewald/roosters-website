@@ -19,9 +19,9 @@ const TIMELINE = [
 export default function HistoriePage() {
   return (
     <>
-      <section className="bg-navy pt-12 pb-16">
+      <section className="bg-primary pt-12 pb-16">
         <div className="container">
-          <p className="text-purple text-xs font-bold uppercase tracking-[0.15em] mb-2">Die Roosters</p>
+          <p className="text-accent text-xs font-bold uppercase tracking-[0.15em] mb-2">Die Roosters</p>
           <h1 className="text-4xl md:text-5xl font-black uppercase text-white">Historie</h1>
           <p className="text-white/50 mt-2">Über 60 Jahre Eishockey aus dem Sauerland</p>
         </div>
@@ -33,10 +33,10 @@ export default function HistoriePage() {
             <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" />
             {TIMELINE.map((event, i) => (
               <div key={event.year} className="relative pl-16 pb-10 last:pb-0">
-                <div className="absolute left-0 w-12 h-12 bg-navy rounded-xl flex items-center justify-center z-10">
-                  <span className="text-gold font-black text-xs">{event.year}</span>
+                <div className="absolute left-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center z-10">
+                  <span className="text-accent font-black text-xs">{event.year}</span>
                 </div>
-                <h3 className="font-bold text-lg uppercase text-navy mb-1">{event.title}</h3>
+                <h3 className="font-bold text-lg uppercase text-primary mb-1">{event.title}</h3>
                 <p className="text-gray-500">{event.text}</p>
               </div>
             ))}
