@@ -116,7 +116,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
+      <div className="border-t border-white/10 safe-bottom">
         <div className="container py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-xs">
             &copy; {new Date().getFullYear()} Iserlohn Roosters GmbH. Alle Rechte vorbehalten.

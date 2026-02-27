@@ -61,13 +61,25 @@ const NAV_ITEMS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState<string | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      // Hide header on scroll down, show on scroll up (only on mobile)
+      if (y > 100) {
+        setHidden(y > lastScrollY.current && y - lastScrollY.current > 5);
+      } else {
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -130,9 +142,11 @@ export default function Header() {
 
       {/* Main Header */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 transition-all duration-300 safe-top ${
+          hidden && !mobileOpen ? "-translate-y-full" : "translate-y-0"
+        } ${
           scrolled
-            ? "bg-navy/95 backdrop-blur-md shadow-lg"
+            ? "bg-navy lg:bg-navy/95 lg:backdrop-blur-md shadow-lg"
             : "bg-navy"
         }`}
       >
@@ -214,7 +228,7 @@ export default function Header() {
 
             {/* Mobile Toggle */}
             <button
-              className="lg:hidden text-white p-2"
+              className="lg:hidden text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
               onClick={() => setMobileOpen(true)}
               aria-label="Navigation öffnen"
             >
@@ -231,9 +245,9 @@ export default function Header() {
         <div className="fixed inset-0 z-[100] lg:hidden">
           <div className="absolute inset-0 bg-black/60" onClick={closeMobile} />
           <div className="absolute right-0 top-0 h-full w-[300px] max-w-[85vw] bg-navy overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
+            <div className="flex items-center justify-between p-4 border-b border-white/10 safe-top">
               <span className="text-white font-bold uppercase text-sm">Menü</span>
-              <button onClick={closeMobile} className="text-white p-1" aria-label="Schließen">
+              <button onClick={closeMobile} className="text-white p-2 min-w-[44px] min-h-[44px] flex items-center justify-center" aria-label="Schließen">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -278,7 +292,7 @@ export default function Header() {
                           key={child.href}
                           href={child.href}
                           target={"external" in child ? "_blank" : undefined}
-                          className="block px-3 py-2.5 text-sm text-white/70 hover:text-gold transition-colors"
+                          className="flex items-center px-3 py-3 min-h-[44px] text-sm text-white/70 hover:text-gold transition-colors"
                           onClick={closeMobile}
                         >
                           {child.label}

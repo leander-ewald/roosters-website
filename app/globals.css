@@ -41,6 +41,10 @@
 }
 
 /* === Base === */
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-montserrat), system-ui, sans-serif;
   font-weight: 500;
@@ -48,6 +52,7 @@ body {
   background: var(--white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* === Typography === */
@@ -182,4 +187,22 @@ h1, h2, h3, h4, h5, h6 {
 ::selection {
   background: var(--purple);
   color: var(--white);
+}
+
+/* === Mobile Touch Targets === */
+@media (pointer: coarse) {
+  a, button, [role="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* === Safe Area (iOS Notch/Dynamic Island) === */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
