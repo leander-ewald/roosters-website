@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import FlagIcon from "@/components/FlagIcon";
 
 export interface Player {
@@ -10,6 +11,7 @@ export interface Player {
   nationality: string;
   flag: string;
   image?: string;
+  slug?: string;
 }
 
 const POS_COLORS = {
@@ -20,9 +22,10 @@ const POS_COLORS = {
 
 export default function PlayerCard({ player }: { player: Player }) {
   const imageUrl = player.image || null;
+  const slug = player.slug || player.name.toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
   return (
-    <div className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <Link href={`/team/kader/${slug}`} className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block">
       {/* Photo */}
       <div className="aspect-[3/4] bg-gradient-to-br from-primary to-primary-dark relative overflow-hidden">
         {imageUrl ? (
@@ -63,6 +66,6 @@ export default function PlayerCard({ player }: { player: Player }) {
           {player.name}
         </h3>
       </div>
-    </div>
+    </Link>
   );
 }
