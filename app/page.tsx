@@ -285,12 +285,14 @@ export default function Home() {
 
             {/* Stats */}
             <div>
-              <h2 className="section-title mb-6 text-xl">Saison in Zahlen</h2>
+              <h2 className="section-title mb-6 text-xl">Saison 25/26 in Zahlen</h2>
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { value: 1959, label: "Gegründet", suffix: "" },
-                  { value: ROOSTERS_STANDING?.gp || 45, label: "Gespielte Spiele", suffix: "" },
+                  { value: ROOSTERS_STANDING?.w || 12, label: "Siege", suffix: "" },
+                  { value: ROOSTERS_STANDING?.gf || 110, label: "Erzielte Tore", suffix: "" },
                   { value: ROOSTERS_STANDING?.pts || 49, label: "Punkte", suffix: "" },
+                  { value: ROOSTERS_STANDING?.gp || 45, label: "Spiele", suffix: "" },
+                  { value: ROOSTERS_STANDING?.rank || 12, label: "Tabellenplatz", suffix: "." },
                   { value: 4500, label: "Fans / Heimspiel", suffix: "+" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-primary rounded-lg p-5 text-center">
