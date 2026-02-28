@@ -67,12 +67,12 @@ export default function Home() {
           src="/images/hero-hockey.webp"
           alt="Eishockey Action"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-60"
           priority
           quality={80}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-primary" />
 
         <div className="relative z-10 container">
           <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 py-16 md:py-24 lg:py-28">
