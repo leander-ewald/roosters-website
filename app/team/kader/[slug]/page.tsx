@@ -11,14 +11,15 @@ export function generateStaticParams() {
 }
 
 /* ── Dynamic metadata ── */
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const player = getPlayerBySlug(params.slug);
-  if (!player) return { title: "Spieler nicht gefunden" };
-
-  return {
-    title: `${player.fullName} #${player.number}`,
-    description: `${player.fullName} — ${player.position} der Iserlohn Roosters. Rückennummer ${player.number}, Saison 2025/26.`,
-  };
+export function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  return params.then(({ slug }) => {
+    const player = getPlayerBySlug(slug);
+    if (!player) return { title: "Spieler nicht gefunden" };
+    return {
+      title: `${player.fullName} #${player.number}`,
+      description: `${player.fullName} — ${player.position} der Iserlohn Roosters. Rückennummer ${player.number}, Saison 2025/26.`,
+    };
+  });
 }
 
 const POS_COLORS = {
@@ -27,8 +28,9 @@ const POS_COLORS = {
   "Stürmer": "bg-cta text-white",
 };
 
-export default function PlayerProfilePage({ params }: { params: { slug: string } }) {
-  const player = getPlayerBySlug(params.slug);
+export default async function PlayerProfilePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const player = getPlayerBySlug(slug);
   if (!player) notFound();
 
   const isGoalie = player.position === "Torwart";
@@ -36,7 +38,7 @@ export default function PlayerProfilePage({ params }: { params: { slug: string }
   const goalieStats = player.goalieStats;
 
   /* Find prev/next players for navigation */
-  const idx = PLAYERS.findIndex((p) => p.slug === params.slug);
+  const idx = PLAYERS.findIndex((p) => p.slug === slug);
   const prev = idx > 0 ? PLAYERS[idx - 1] : null;
   const next = idx < PLAYERS.length - 1 ? PLAYERS[idx + 1] : null;
 
