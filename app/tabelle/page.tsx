@@ -22,6 +22,45 @@ export default function TabellePage() {
         </div>
       </section>
 
+      {/* Roosters Summary */}
+      <section className="bg-gray-50 border-b border-gray-200">
+        <div className="container py-6">
+          {(() => {
+            const ir = DEL_TABLE.find(t => t.isRoosters);
+            if (!ir) return null;
+            const diff = ir.gf - ir.ga;
+            return (
+              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                <div className="text-center">
+                  <p className="text-3xl font-black text-primary">{ir.rank}.</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Platz</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-black text-accent">{ir.pts}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Punkte</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-black text-green-600">{ir.w}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Siege</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-black text-cta">{ir.l}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Niederl.</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-black text-primary">{ir.gf}:{ir.ga}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Tore</p>
+                </div>
+                <div className="text-center">
+                  <p className={`text-3xl font-black ${diff > 0 ? "text-green-600" : "text-cta"}`}>{diff > 0 ? `+${diff}` : diff}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Differenz</p>
+                </div>
+              </div>
+            );
+          })()}
+        </div>
+      </section>
+
       {/* Table */}
       <section className="section">
         <div className="container">

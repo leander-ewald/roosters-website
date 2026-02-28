@@ -22,6 +22,27 @@ export default function StatistikPage() {
         </div>
       </section>
 
+      {/* Team Overview */}
+      <section className="bg-gray-50 border-b border-gray-200">
+        <div className="container py-6">
+          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+            {[
+              { value: "110", label: "Erzielte Tore" },
+              { value: "141", label: "Gegentore" },
+              { value: "12", label: "Siege (reg.)" },
+              { value: "3", label: "OT-Siege" },
+              { value: "49", label: "Punkte" },
+              { value: `${(110 / 45).toFixed(1)}`, label: "Tore/Spiel" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="text-2xl md:text-3xl font-black text-primary">{s.value}</p>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Top Scorer */}
       <section className="section">
         <div className="container">

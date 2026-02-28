@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -43,7 +42,7 @@ export default function PartnerPage() {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {HAUPTSPONSOREN.map((s) => (
                 <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" className="bg-white border border-gray-200 rounded-xl p-6 flex items-center justify-center hover:shadow-lg hover:-translate-y-1 transition-all group h-24">
-                  <Image src={s.logo} alt={s.name} width={140} height={42} className="h-10 w-auto object-contain" />
+                  <span className="font-bold text-sm uppercase text-primary group-hover:text-accent transition-colors text-center">{s.name}</span>
                 </a>
               ))}
             </div>

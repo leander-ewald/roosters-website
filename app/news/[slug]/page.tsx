@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { NEWS } from "@/lib/data";
 import { notFound } from "next/navigation";
 
@@ -43,6 +44,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <p className="text-white/50 mt-4">{article.date}</p>
         </div>
       </section>
+
+      {/* Article Image */}
+      {article.image && (
+        <section className="bg-gray-100">
+          <div className="container max-w-4xl py-8">
+            <div className="relative aspect-[16/9] rounded-xl overflow-hidden">
+              <Image
+                src={article.image}
+                alt={article.title}
+                fill
+                sizes="(max-width: 1024px) 100vw, 896px"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Content */}
       <section className="py-12">
