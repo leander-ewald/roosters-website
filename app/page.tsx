@@ -63,7 +63,15 @@ export default function Home() {
     <>
       {/* ═══ HERO ═══ */}
       <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary-light)_0%,_transparent_60%)] opacity-40" />
+        <Image
+          src="/images/hero-hockey.webp"
+          alt="Eishockey Action"
+          fill
+          className="object-cover opacity-30"
+          priority
+          quality={80}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-primary" />
 
         <div className="relative z-10 container">
@@ -73,9 +81,9 @@ export default function Home() {
               <Image
                 src="/roosters-logo-white.png"
                 alt="Iserlohn Roosters"
-                width={200}
-                height={56}
-                className="h-10 md:h-12 w-auto mb-6 mx-auto lg:mx-0 opacity-80"
+                width={300}
+                height={84}
+                className="h-16 md:h-20 lg:h-24 w-auto mb-6 mx-auto lg:mx-0 drop-shadow-[0_0_25px_rgba(74,143,231,0.4)]"
                 priority
               />
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[0.95] mb-5">
@@ -185,6 +193,7 @@ export default function Home() {
             {FEATURED && (
               <Link href={`/news/${FEATURED.id}`} className="lg:col-span-3 group">
                 <div className="relative rounded-lg overflow-hidden aspect-[16/9] bg-gradient-to-br from-primary to-primary-light">
+                  <Image src="/images/game-action.webp" alt="Spielszene" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
                     <span className="inline-block bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3">{FEATURED.category}</span>
@@ -198,10 +207,10 @@ export default function Home() {
 
             {/* Side articles */}
             <div className="lg:col-span-2 flex flex-col gap-1">
-              {SIDE_NEWS.map((article) => (
+              {SIDE_NEWS.map((article, idx) => (
                 <Link key={article.id} href={`/news/${article.id}`} className="group flex gap-4 p-3 rounded hover:bg-gray-50 transition-colors">
-                  <div className="w-20 h-14 flex-shrink-0 rounded bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
-                    <span className="text-primary/20 text-[10px] font-bold uppercase">{article.category.substring(0, 4)}</span>
+                  <div className="w-20 h-14 flex-shrink-0 rounded overflow-hidden relative">
+                    <Image src={idx % 2 === 0 ? "/images/hockey-player.webp" : "/images/arena-rink.webp"} alt={article.title} fill className="object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-sm font-bold leading-tight line-clamp-2 group-hover:text-accent transition-colors">{article.title}</h4>
@@ -312,9 +321,11 @@ export default function Home() {
       </section>
 
       {/* ═══ CTA ═══ */}
-      <section className="bg-primary py-16 md:py-20">
-        <div className="container text-center">
-          <Image src="/roosters-logo-white.png" alt="Roosters" width={120} height={34} className="h-8 w-auto mx-auto mb-5 opacity-40" />
+      <section className="relative bg-primary py-16 md:py-20 overflow-hidden">
+        <Image src="/images/hockey-news.webp" alt="Eishockey Atmosphäre" fill className="object-cover opacity-15" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-primary" />
+        <div className="relative z-10 container text-center">
+          <Image src="/roosters-logo-white.png" alt="Roosters" width={160} height={45} className="h-12 w-auto mx-auto mb-5 drop-shadow-[0_0_20px_rgba(74,143,231,0.3)]" />
           <h2 className="text-2xl md:text-4xl font-black uppercase text-white mb-3 leading-tight">
             Werde Teil der <span className="text-accent">Roosters-Familie</span>
           </h2>
