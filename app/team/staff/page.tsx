@@ -70,7 +70,7 @@ export default function StaffPage() {
                     key={member.name}
                     className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden"
                   >
-                    <div className="w-full aspect-[3/4] bg-primary overflow-hidden">
+                    <div className="w-full aspect-square sm:aspect-[3/4] bg-primary overflow-hidden">
                       {member.image ? (
                         <Image src={member.image} alt={member.name} width={300} height={400} className="w-full h-full object-cover object-top" unoptimized />
                       ) : (

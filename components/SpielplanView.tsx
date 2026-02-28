@@ -46,7 +46,7 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
   return (
     <>
       {/* Filter + Bilanz */}
-      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 md:top-20 z-[30]">
+      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 lg:top-[72px] z-[30]">
         <div className="container py-3">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex gap-2">
@@ -54,14 +54,14 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
+                  className={`px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${
                     filter === f
                       ? "bg-primary text-white"
                       : "bg-white text-gray-500 hover:bg-gray-100"
                   }`}
                 >
                   {f}
-                  <span className="ml-1.5 text-[10px] opacity-60">
+                  <span className="ml-1.5 text-[11px] opacity-60">
                     ({f === "Alle" ? schedule.length : f === "Heim" ? schedule.filter(g => g.isHome).length : schedule.filter(g => !g.isHome).length})
                   </span>
                 </button>
@@ -93,18 +93,18 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
                   return (
                     <div
                       key={i}
-                      className={`flex items-center gap-4 p-4 rounded-lg transition-colors ${
+                      className={`flex items-center gap-2 sm:gap-4 p-3 sm:p-4 rounded-lg transition-colors ${
                         isHomeGame ? "bg-primary/5 hover:bg-primary/10" : "bg-gray-50 hover:bg-gray-100"
                       } ${past ? "" : "border-l-4 border-accent"}`}
                     >
                       {/* Date */}
-                      <div className="w-20 shrink-0 text-center">
-                        <p className="text-sm font-bold text-primary">{game.date.slice(0, 6)}</p>
-                        <p className="text-xs text-gray-400">{game.time}</p>
+                      <div className="w-14 sm:w-20 shrink-0 text-center">
+                        <p className="text-xs sm:text-sm font-bold text-primary">{game.date.slice(0, 6)}</p>
+                        <p className="text-[11px] sm:text-xs text-gray-400">{game.time}</p>
                       </div>
 
                       {/* Badge */}
-                      <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0 ${
+                      <span className={`hidden sm:inline text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shrink-0 ${
                         isHomeGame ? "bg-primary text-white" : "bg-gray-200 text-gray-600"
                       }`}>
                         {isHomeGame ? "Heim" : "Ausw."}
@@ -112,32 +112,32 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
 
                       {/* Teams */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1 sm:gap-2">
                           {getTeamLogo(game.home) && (
-                            <Image src={getTeamLogo(game.home)} alt={game.home} width={24} height={24} className="h-6 w-6 object-contain shrink-0" />
+                            <Image src={getTeamLogo(game.home)} alt={game.home} width={24} height={24} className="hidden sm:block h-6 w-6 object-contain shrink-0" />
                           )}
-                          <span className={`font-bold text-sm ${game.home === "Iserlohn Roosters" ? "text-primary" : ""}`}>
+                          <span className={`font-bold text-xs sm:text-sm truncate ${game.home === "Iserlohn Roosters" ? "text-primary" : ""}`}>
                             {game.home}
                           </span>
-                          <span className="text-gray-300 mx-1">vs</span>
+                          <span className="text-gray-300 mx-0.5 sm:mx-1 shrink-0">vs</span>
                           {getTeamLogo(game.away) && (
-                            <Image src={getTeamLogo(game.away)} alt={game.away} width={24} height={24} className="h-6 w-6 object-contain shrink-0" />
+                            <Image src={getTeamLogo(game.away)} alt={game.away} width={24} height={24} className="hidden sm:block h-6 w-6 object-contain shrink-0" />
                           )}
-                          <span className={`font-bold text-sm truncate ${game.away === "Iserlohn Roosters" ? "text-primary" : ""}`}>
+                          <span className={`font-bold text-xs sm:text-sm truncate ${game.away === "Iserlohn Roosters" ? "text-primary" : ""}`}>
                             {game.away}
                           </span>
                         </div>
-                        <p className="text-xs text-gray-400 truncate mt-0.5">{game.venue}</p>
+                        <p className="text-[11px] sm:text-xs text-gray-400 truncate mt-0.5">{game.venue}</p>
                       </div>
 
                       {/* Score */}
-                      <div className="w-16 text-center shrink-0">
+                      <div className="w-12 sm:w-16 text-center shrink-0">
                         {game.homeScore !== undefined ? (
-                          <span className={`text-lg font-black ${roostersWon ? "text-green-600" : "text-gray-400"}`}>
+                          <span className={`text-base sm:text-lg font-black ${roostersWon ? "text-green-600" : "text-gray-400"}`}>
                             {game.homeScore}:{game.awayScore}
                           </span>
                         ) : (
-                          <span className="text-xs font-bold text-accent uppercase">{game.time}</span>
+                          <span className="text-[11px] sm:text-xs font-bold text-accent uppercase">{game.time}</span>
                         )}
                       </div>
                     </div>

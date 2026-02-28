@@ -17,7 +17,7 @@ export default function NewsGrid({ articles }: { articles: Article[] }) {
   return (
     <>
       {/* Filter */}
-      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 md:top-20 z-[30]">
+      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 lg:top-[72px] z-[30]">
         <div className="container py-3 overflow-x-auto">
           <div className="flex gap-2 min-w-max">
             {CATEGORIES.map((cat) => (

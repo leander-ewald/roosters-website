@@ -70,7 +70,7 @@ export default function MitgliedschaftPage() {
           <h2 className="section-title text-center mb-8">Mitgliedschafts-Modelle</h2>
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PLANS.map((plan) => (
-              <div key={plan.name} className={`rounded-2xl p-6 ${plan.highlighted ? "bg-primary text-white ring-2 ring-accent scale-105" : "bg-white border border-gray-200"}`}>
+              <div key={plan.name} className={`rounded-2xl p-6 ${plan.highlighted ? "bg-primary text-white ring-2 ring-accent md:scale-105" : "bg-white border border-gray-200"}`}>
                 {plan.highlighted && (
                   <span className="inline-block bg-accent text-primary text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Beliebt</span>
                 )}

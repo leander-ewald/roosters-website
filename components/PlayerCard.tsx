@@ -45,8 +45,8 @@ export default function PlayerCard({ player }: { player: Player }) {
           </div>
         )}
         {/* Number badge */}
-        <div className="absolute top-3 right-3 w-12 h-12 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-          <span className="text-primary font-black text-xl">{player.number}</span>
+        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 w-9 h-9 sm:w-12 sm:h-12 bg-accent rounded-lg flex items-center justify-center shadow-lg">
+          <span className="text-primary font-black text-sm sm:text-xl">{player.number}</span>
         </div>
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-primary-light/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

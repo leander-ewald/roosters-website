@@ -174,7 +174,7 @@ export default function Home() {
                         ) : (
                           <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.home}</span>
                         )}
-                        <span className="text-white/40 text-[9px] font-semibold uppercase truncate max-w-[100px]">{game.home}</span>
+                        <span className="text-white/40 text-[11px] font-semibold uppercase truncate max-w-[100px]">{game.home}</span>
                       </div>
                       <span className={`text-lg font-black min-w-[50px] ${type === "result" ? "text-white" : "text-white/30"}`}>
                         {type === "result" && game.homeScore !== undefined ? `${game.homeScore}:${game.awayScore}` : "VS"}
@@ -185,7 +185,7 @@ export default function Home() {
                         ) : (
                           <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.away}</span>
                         )}
-                        <span className="text-white/40 text-[9px] font-semibold uppercase truncate max-w-[100px]">{game.away}</span>
+                        <span className="text-white/40 text-[11px] font-semibold uppercase truncate max-w-[100px]">{game.away}</span>
                       </div>
                     </div>
                     <p className="text-white/30 text-[11px]">{game.date}, {game.time}</p>
@@ -285,7 +285,7 @@ export default function Home() {
                 <h2 className="section-title mb-0 text-xl">DEL Tabelle</h2>
                 <Link href="/tabelle" className="text-accent text-xs font-bold uppercase tracking-wider hover:text-primary transition-colors">Vollständig</Link>
               </div>
-              <div className="border border-gray-100 rounded-lg overflow-hidden">
+              <div className="border border-gray-100 rounded-lg overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="bg-gray-50 text-gray-500 text-[11px] uppercase tracking-wider">

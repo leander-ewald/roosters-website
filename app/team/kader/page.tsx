@@ -37,9 +37,9 @@ export default function KaderPage() {
       </section>
 
       {/* Filter */}
-      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 md:top-20 z-[30]">
+      <section className="bg-gray-50 border-b border-gray-200 sticky top-16 lg:top-[72px] z-[30]">
         <div className="container py-3">
-          <div className="flex gap-2">
+          <div className="flex gap-2 overflow-x-auto pb-1">
             {POSITIONS.map((pos) => (
               <button
                 key={pos}

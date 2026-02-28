@@ -116,7 +116,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 flex items-center justify-center rounded bg-white/5 text-white/30 hover:bg-accent hover:text-primary transition-all"
+                  className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 text-white/30 hover:bg-accent hover:text-primary transition-all"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d={s.d} />
@@ -132,12 +132,12 @@ export default function Footer() {
               <h4 className="text-[11px] font-bold uppercase tracking-widest text-accent mb-4">
                 {col.title}
               </h4>
-              <ul className="space-y-2.5">
+              <ul className="space-y-1">
                 {col.items.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/40 hover:text-white transition-colors"
+                      className="text-sm text-white/40 hover:text-white transition-colors inline-block py-1.5"
                     >
                       {link.label}
                     </Link>

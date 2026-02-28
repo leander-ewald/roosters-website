@@ -121,8 +121,8 @@ export default function TicketsPage() {
           {/* Pricing Detail */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="section-title text-center mb-8">Preisübersicht</h2>
-            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-x-auto">
+              <table className="w-full text-sm min-w-[480px]">
                 <thead>
                   <tr className="bg-primary text-white text-xs uppercase tracking-wider">
                     <th className="text-left py-3 px-4 font-bold">Kategorie</th>
@@ -185,7 +185,7 @@ export default function TicketsPage() {
           {/* Arena Info */}
           <div className="max-w-4xl mx-auto bg-primary/5 rounded-2xl p-6">
             <h3 className="font-bold text-sm uppercase text-primary mb-3">Balver Zinn Arena am Seilersee</h3>
-            <div className="grid sm:grid-cols-4 gap-4 text-center mb-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-4">
               {[
                 { label: "Kapazität", value: "4.999" },
                 { label: "Stehplätze", value: "3.297" },
