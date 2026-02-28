@@ -28,9 +28,15 @@ const SIDE_NEWS = NEWS.slice(1, 5);
 const ROOSTERS_STANDING = DEL_TABLE.find((t) => t.team.includes("Iserlohn"));
 
 const SPONSORS = [
-  "Raab Karcher", "Märkische Bank", "Krombacher", "Böhm Kabel",
-  "Kirchhoff Gruppe", "Stadtwerke Iserlohn", "Huckschlag Transporte",
-  "Platzmann Federn", "J.D. von Hagen AG",
+  { name: "Raab Karcher", logo: "/sponsors/raab-karcher.png" },
+  { name: "Märkische Bank", logo: "/sponsors/maerkische-bank.png" },
+  { name: "Krombacher", logo: "/sponsors/krombacher.png" },
+  { name: "Böhm Kabel", logo: "/sponsors/boehm-kabel.png" },
+  { name: "Kirchhoff Gruppe", logo: "/sponsors/kirchhoff.png" },
+  { name: "Stadtwerke Iserlohn", logo: "/sponsors/stadtwerke-iserlohn.png" },
+  { name: "Huckschlag Transporte", logo: "/sponsors/huckschlag.png" },
+  { name: "Platzmann Federn", logo: "/sponsors/platzmann-federn.png" },
+  { name: "J.D. von Hagen AG", logo: "/sponsors/jd-von-hagen.png" },
 ];
 
 export default function Home() {
@@ -312,10 +318,10 @@ export default function Home() {
       <section className="py-10 bg-off-white border-t border-gray-100">
         <div className="container">
           <p className="text-center text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-6">Hauptsponsoren</p>
-          <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
-            {SPONSORS.map((name) => (
-              <div key={name} className="flex items-center justify-center h-14 px-6 bg-white border border-gray-100 rounded text-gray-400 text-xs font-bold uppercase tracking-wider hover:text-primary hover:border-gray-300 transition-colors cursor-pointer">
-                {name}
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+            {SPONSORS.map((sponsor) => (
+              <div key={sponsor.name} className="flex items-center justify-center h-16 px-4 bg-white border border-gray-100 rounded-lg hover:shadow-md transition-shadow cursor-pointer">
+                <Image src={sponsor.logo} alt={sponsor.name} width={140} height={42} className="h-10 w-auto object-contain" />
               </div>
             ))}
           </div>
