@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Game } from "@/lib/data";
+import { getTeamLogo } from "@/lib/teams";
 
 type Filter = "Alle" | "Heim" | "Auswärts";
 
@@ -110,16 +112,22 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
 
                       {/* Teams */}
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-sm truncate">
-                          <span className={game.home === "Iserlohn Roosters" ? "text-primary" : ""}>
+                        <div className="flex items-center gap-2">
+                          {getTeamLogo(game.home) && (
+                            <Image src={getTeamLogo(game.home)} alt={game.home} width={24} height={24} className="h-6 w-6 object-contain shrink-0" />
+                          )}
+                          <span className={`font-bold text-sm ${game.home === "Iserlohn Roosters" ? "text-primary" : ""}`}>
                             {game.home}
                           </span>
-                          <span className="text-gray-300 mx-2">vs</span>
-                          <span className={game.away === "Iserlohn Roosters" ? "text-primary" : ""}>
+                          <span className="text-gray-300 mx-1">vs</span>
+                          {getTeamLogo(game.away) && (
+                            <Image src={getTeamLogo(game.away)} alt={game.away} width={24} height={24} className="h-6 w-6 object-contain shrink-0" />
+                          )}
+                          <span className={`font-bold text-sm truncate ${game.away === "Iserlohn Roosters" ? "text-primary" : ""}`}>
                             {game.away}
                           </span>
-                        </p>
-                        <p className="text-xs text-gray-400 truncate">{game.venue}</p>
+                        </div>
+                        <p className="text-xs text-gray-400 truncate mt-0.5">{game.venue}</p>
                       </div>
 
                       {/* Score */}

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { NEWS as ALL_NEWS, SCHEDULE, DEL_TABLE } from "@/lib/data";
+import { getTeamLogo } from "@/lib/teams";
 
 /* ── static data ── */
 const LAST_GAME = (() => {
@@ -121,14 +122,22 @@ export default function Home() {
                     <div className="flex items-center justify-between gap-3 mb-4">
                       <div className="flex-1">
                         <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <Image src="/roosters-logo-white.png" alt="IR" width={36} height={36} className="h-8 w-auto" />
+                          {getTeamLogo(NEXT_GAME.home) ? (
+                            <Image src={getTeamLogo(NEXT_GAME.home)} alt={NEXT_GAME.home} width={36} height={36} className="h-8 w-auto object-contain" />
+                          ) : (
+                            <span className="text-white/50 font-black text-lg">{NEXT_GAME.home.substring(0, 3).toUpperCase()}</span>
+                          )}
                         </div>
                         <p className="text-white text-[11px] font-bold uppercase">{NEXT_GAME.home}</p>
                       </div>
                       <span className="text-white/30 text-2xl font-black">VS</span>
                       <div className="flex-1">
                         <div className="w-14 h-14 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-2">
-                          <span className="text-white/50 font-black text-lg">{NEXT_GAME.away.substring(0, 3).toUpperCase()}</span>
+                          {getTeamLogo(NEXT_GAME.away) ? (
+                            <Image src={getTeamLogo(NEXT_GAME.away)} alt={NEXT_GAME.away} width={36} height={36} className="h-8 w-auto object-contain" />
+                          ) : (
+                            <span className="text-white/50 font-black text-lg">{NEXT_GAME.away.substring(0, 3).toUpperCase()}</span>
+                          )}
                         </div>
                         <p className="text-white text-[11px] font-bold uppercase">{NEXT_GAME.away}</p>
                       </div>
@@ -159,11 +168,25 @@ export default function Home() {
                 {game ? (
                   <>
                     <div className="flex items-center justify-center gap-4 mb-2">
-                      <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.home}</span>
-                      <span className={`text-lg font-black min-w-[60px] ${type === "result" ? "text-white" : "text-white/30"}`}>
+                      <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
+                        {getTeamLogo(game.home) ? (
+                          <Image src={getTeamLogo(game.home)} alt={game.home} width={32} height={32} className="h-8 w-8 object-contain" />
+                        ) : (
+                          <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.home}</span>
+                        )}
+                        <span className="text-white/40 text-[9px] font-semibold uppercase truncate max-w-[100px]">{game.home}</span>
+                      </div>
+                      <span className={`text-lg font-black min-w-[50px] ${type === "result" ? "text-white" : "text-white/30"}`}>
                         {type === "result" && game.homeScore !== undefined ? `${game.homeScore}:${game.awayScore}` : "VS"}
                       </span>
-                      <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.away}</span>
+                      <div className="flex flex-col items-center gap-1 flex-1 min-w-0">
+                        {getTeamLogo(game.away) ? (
+                          <Image src={getTeamLogo(game.away)} alt={game.away} width={32} height={32} className="h-8 w-8 object-contain" />
+                        ) : (
+                          <span className="text-white text-xs font-bold uppercase truncate max-w-[100px]">{game.away}</span>
+                        )}
+                        <span className="text-white/40 text-[9px] font-semibold uppercase truncate max-w-[100px]">{game.away}</span>
+                      </div>
                     </div>
                     <p className="text-white/30 text-[11px]">{game.date}, {game.time}</p>
                     <div className="mt-3">
