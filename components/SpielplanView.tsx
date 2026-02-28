@@ -133,7 +133,7 @@ export default function SpielplanView({ schedule }: { schedule: Game[] }) {
                       {/* Score */}
                       <div className="w-16 text-center shrink-0">
                         {game.homeScore !== undefined ? (
-                          <span className={`text-lg font-black ${roostersWon ? "text-green-600" : "text-cta"}`}>
+                          <span className={`text-lg font-black ${roostersWon ? "text-green-600" : "text-gray-400"}`}>
                             {game.homeScore}:{game.awayScore}
                           </span>
                         ) : (

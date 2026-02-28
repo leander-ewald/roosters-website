@@ -37,24 +37,24 @@ export default function OrganisationPage() {
               <h2 className="text-lg font-black uppercase text-primary mb-4 border-b-2 border-primary pb-2">
                 {department}
               </h2>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-5">
                 {members.map((member) => (
                   <div
                     key={member.name}
-                    className="flex items-center gap-4 bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                    className="flex items-center gap-5 bg-white rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden"
                   >
-                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-primary to-primary-light">
+                    <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-primary to-primary-light">
                       {member.image ? (
-                        <Image src={member.image} alt={member.name} width={56} height={56} className="w-full h-full object-cover object-top" unoptimized />
+                        <Image src={member.image} alt={member.name} width={96} height={96} className="w-full h-full object-cover object-top" unoptimized />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-accent font-black text-xl">{member.name.split(" ").map(n => n[0]).join("")}</span>
+                          <span className="text-accent font-black text-2xl">{member.name.split(" ").map(n => n[0]).join("")}</span>
                         </div>
                       )}
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-bold text-base uppercase">{member.name}</h3>
-                      <p className="text-gray-400 text-sm">{member.role}</p>
+                      <p className="text-gray-400 text-sm mt-1">{member.role}</p>
                     </div>
                   </div>
                 ))}

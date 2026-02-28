@@ -64,23 +64,25 @@ export default function StaffPage() {
                   {CATEGORY_LABELS[category]}
                 </h2>
               </div>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {members.map((member) => (
                   <div
                     key={member.name}
-                    className="bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
+                    className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden"
                   >
-                    <div className="w-12 h-12 bg-primary rounded-lg overflow-hidden mb-3 shrink-0">
+                    <div className="w-full aspect-[3/4] bg-primary overflow-hidden">
                       {member.image ? (
-                        <Image src={member.image} alt={member.name} width={48} height={48} className="w-full h-full object-cover object-top" unoptimized />
+                        <Image src={member.image} alt={member.name} width={300} height={400} className="w-full h-full object-cover object-top" unoptimized />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-accent font-black text-lg">{member.name.split(" ").map(n => n[0]).join("")}</span>
+                          <span className="text-accent font-black text-4xl">{member.name.split(" ").map(n => n[0]).join("")}</span>
                         </div>
                       )}
                     </div>
-                    <h3 className="font-bold text-base uppercase">{member.name}</h3>
-                    <p className="text-gray-400 text-sm mt-1">{member.role}</p>
+                    <div className="p-4">
+                      <h3 className="font-bold text-base uppercase">{member.name}</h3>
+                      <p className="text-gray-400 text-sm mt-1">{member.role}</p>
+                    </div>
                   </div>
                 ))}
               </div>

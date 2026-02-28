@@ -35,7 +35,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             </svg>
             Zurück zu News
           </Link>
-          <span className="inline-block bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-4">
+          <span className="inline-block bg-cta text-primary text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-4">
             {article.category}
           </span>
           <h1 className="text-3xl md:text-4xl font-black uppercase text-white leading-tight">

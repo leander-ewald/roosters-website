@@ -8,8 +8,8 @@
   --accent-light: #fbd97a;
   --white: #ffffff;
   --off-white: #F5F6F8;
-  --cta: #C8102E;
-  --cta-hover: #A80D24;
+  --cta: #f9cd59;
+  --cta-hover: #e8b732;
   --dark: #0A0E17;
   --gray-50: #f9fafb;
   --gray-100: #f3f4f6;
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
   text-decoration: none;
 }
-.btn-primary { background: var(--cta); color: var(--white); border: none; }
+.btn-primary { background: var(--cta); color: var(--primary); border: none; font-weight: 800; }
 .btn-primary:hover { background: var(--cta-hover); }
 .btn-secondary { background: var(--primary); color: var(--white); border: none; }
 .btn-secondary:hover { background: var(--primary-light); }
@@ -137,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--gray-100); }
 ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
-::selection { background: var(--accent); color: var(--white); }
+::selection { background: var(--accent); color: var(--primary); }
 
 /* === Touch === */
 @media (pointer: coarse) {

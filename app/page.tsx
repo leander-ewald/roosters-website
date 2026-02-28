@@ -113,9 +113,9 @@ export default function Home() {
             {NEXT_GAME && (
               <div className="w-full max-w-sm lg:max-w-xs flex-shrink-0">
                 <div className="bg-white/5 backdrop-blur border border-white/10 rounded-lg overflow-hidden">
-                  <div className="bg-cta px-4 py-2 flex items-center justify-between">
-                    <span className="text-white text-[10px] font-bold uppercase tracking-widest">Nächstes Heimspiel</span>
-                    <svg className="w-3 h-3 text-white/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                  <div className="bg-accent px-4 py-2 flex items-center justify-between">
+                    <span className="text-primary text-[10px] font-bold uppercase tracking-widest">Nächstes Heimspiel</span>
+                    <svg className="w-3 h-3 text-primary/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                   </div>
                   <div className="p-5 text-center">
                     <p className="text-white/40 text-xs font-medium mb-3">{NEXT_GAME.date} — {NEXT_GAME.time}</p>
@@ -193,7 +193,7 @@ export default function Home() {
                       {type === "result" ? (
                         <Link href="/spielplan" className="text-accent text-[11px] font-semibold uppercase tracking-wider hover:text-accent-light transition-colors">Spielbericht</Link>
                       ) : (
-                        <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="text-cta text-[11px] font-semibold uppercase tracking-wider hover:text-white transition-colors">Tickets</a>
+                        <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="text-accent text-[11px] font-semibold uppercase tracking-wider hover:text-white transition-colors">Tickets</a>
                       )}
                     </div>
                   </>
@@ -225,7 +225,7 @@ export default function Home() {
                   <Image src="/images/game-action.webp" alt="Spielszene" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                    <span className="inline-block bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3">{FEATURED.category}</span>
+                    <span className="inline-block bg-cta text-primary text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded mb-3">{FEATURED.category}</span>
                     <h3 className="text-white text-xl md:text-2xl font-bold uppercase leading-tight mb-2 group-hover:text-accent transition-colors">{FEATURED.title}</h3>
                     <p className="text-white/50 text-sm line-clamp-2">{FEATURED.excerpt}</p>
                     <p className="text-white/30 text-xs mt-3">{FEATURED.date}</p>

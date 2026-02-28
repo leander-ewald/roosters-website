@@ -11,7 +11,7 @@ const POS_BADGE = {
   Alle: "bg-primary text-white",
   Torwart: "bg-accent text-primary",
   Verteidiger: "bg-primary-light text-white",
-  Stürmer: "bg-cta text-white",
+  Stürmer: "bg-cta text-primary",
 };
 
 export default function KaderPage() {

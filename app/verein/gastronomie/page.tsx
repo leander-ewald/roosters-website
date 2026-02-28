@@ -39,7 +39,7 @@ export default function GastronomiePage() {
 
       <section className="section">
         <div className="container max-w-4xl">
-          <div className="bg-cta/10 border border-cta/20 rounded-2xl p-6 mb-10 text-center">
+          <div className="bg-accent/10 border border-accent/20 rounded-2xl p-6 mb-10 text-center">
             <p className="text-primary font-bold text-lg mb-1">Komplett bargeldlos</p>
             <p className="text-gray-500 text-sm">Bezahlung per Girokarte (EC), Kreditkarte oder der aufladbaren IEC-Karte (PayPal-Aufladung möglich).</p>
           </div>

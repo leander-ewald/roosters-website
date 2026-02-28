@@ -100,7 +100,7 @@ export default function StatistikPage() {
                       </span>
                     </td>
                     <td className="text-center py-3 px-2 text-sm text-gray-600">{player.gp}</td>
-                    <td className="text-center py-3 px-2 text-sm font-bold text-cta">{player.goals}</td>
+                    <td className="text-center py-3 px-2 text-sm font-bold text-accent">{player.goals}</td>
                     <td className="text-center py-3 px-2 text-sm font-bold text-primary-light">{player.assists}</td>
                     <td className="text-center py-3 px-3">
                       <span className="text-lg font-black text-primary">{player.points}</span>

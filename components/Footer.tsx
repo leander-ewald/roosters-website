@@ -161,7 +161,7 @@ export default function Footer() {
               <span>info@iserlohn-roosters.de</span>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="text-cta hover:text-white font-bold uppercase tracking-wider transition-colors">
+              <a href="https://tickets.iec.de/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-white font-bold uppercase tracking-wider transition-colors">
                 Tickets
               </a>
               <a href="https://shop.iec.de/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-white font-bold uppercase tracking-wider transition-colors">

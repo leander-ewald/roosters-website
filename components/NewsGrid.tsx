@@ -61,7 +61,7 @@ export default function NewsGrid({ articles }: { articles: Article[] }) {
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <span className="absolute top-3 left-3 bg-cta text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                      <span className="absolute top-3 left-3 bg-cta text-primary text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded">
                         {article.category}
                       </span>
                       <span className="absolute bottom-3 left-3 text-white/60 text-xs">

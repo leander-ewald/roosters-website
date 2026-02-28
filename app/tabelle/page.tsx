@@ -44,7 +44,7 @@ export default function TabellePage() {
                   <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Siege</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-3xl font-black text-cta">{ir.l}</p>
+                  <p className="text-3xl font-black text-gray-400">{ir.l}</p>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Niederl.</p>
                 </div>
                 <div className="text-center">
@@ -52,7 +52,7 @@ export default function TabellePage() {
                   <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Tore</p>
                 </div>
                 <div className="text-center">
-                  <p className={`text-3xl font-black ${diff > 0 ? "text-green-600" : "text-cta"}`}>{diff > 0 ? `+${diff}` : diff}</p>
+                  <p className={`text-3xl font-black ${diff > 0 ? "text-green-600" : "text-gray-400"}`}>{diff > 0 ? `+${diff}` : diff}</p>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Differenz</p>
                 </div>
               </div>
@@ -121,10 +121,10 @@ export default function TabellePage() {
                       <td className="text-center py-3 px-2 text-sm text-green-600 font-medium">{team.w}</td>
                       <td className="text-center py-3 px-2 text-sm text-gray-600">{team.otw}</td>
                       <td className="text-center py-3 px-2 text-sm text-gray-600">{team.otl}</td>
-                      <td className="text-center py-3 px-2 text-sm text-cta font-medium">{team.l}</td>
+                      <td className="text-center py-3 px-2 text-sm text-gray-400 font-medium">{team.l}</td>
                       <td className="text-center py-3 px-2 text-sm text-gray-600">{team.gf}:{team.ga}</td>
                       <td className={`text-center py-3 px-2 text-sm font-medium ${
-                        diff > 0 ? "text-green-600" : diff < 0 ? "text-cta" : "text-gray-500"
+                        diff > 0 ? "text-green-600" : diff < 0 ? "text-gray-400" : "text-gray-500"
                       }`}>
                         {diff > 0 ? `+${diff}` : diff}
                       </td>
@@ -147,7 +147,7 @@ export default function TabellePage() {
               Plätze 1-10: Playoffs
             </span>
             <span className="flex items-center gap-2">
-              <span className="w-3 h-3 bg-cta/10 border border-red/30 rounded-full" />
+              <span className="w-3 h-3 bg-gray-100 border border-gray-300 rounded-full" />
               Plätze 13-14: Abstieg
             </span>
             <span className="flex items-center gap-2">

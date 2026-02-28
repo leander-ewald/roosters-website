@@ -17,7 +17,7 @@ export interface Player {
 const POS_COLORS = {
   Torwart: "bg-accent text-primary",
   Verteidiger: "bg-primary-light text-white",
-  Stürmer: "bg-cta text-white",
+  Stürmer: "bg-cta text-primary",
 };
 
 export default function PlayerCard({ player }: { player: Player }) {
