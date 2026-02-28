@@ -11,6 +11,7 @@ export interface Article {
   category: string;
   excerpt: string;
   content: string;
+  image: string;
 }
 
 export const NEWS: Article[] = [
@@ -20,6 +21,7 @@ export const NEWS: Article[] = [
     date: "26.02.2026",
     category: "Tickets",
     excerpt: "Der Rechnungsversand für die Dauerkarten der Saison 2026/27 hat begonnen. Alle wichtigen Informationen zum Ablauf und den Fristen.",
+    image: "/images/hockey-tickets.webp",
     content: `Der Rechnungsversand für die Saisonkarten 2026/27 hat begonnen. Bestehende Dauerkarteninhaber erhalten ihre Rechnung per E-Mail und Post. Bitte beachtet folgende Fristen:
 
 **Frühbucher-Preis:** Zahlung bis 31.03.2026
@@ -35,6 +37,7 @@ Bei Fragen steht euch die Geschäftsstelle unter tickets@iserlohn-roosters.de zu
     date: "25.02.2026",
     category: "Spielbericht",
     excerpt: "Die Iserlohn Roosters sicherten sich mit einem starken 4:1-Auswärtssieg bei den Nürnberg Ice Tigers vorzeitig den Klassenerhalt in der DEL.",
+    image: "/images/game-action.webp",
     content: `**Nürnberg Ice Tigers 1:4 Iserlohn Roosters** (Spieltag 45)
 
 Ein historischer Abend für die Roosters: Mit dem deutlichen 4:1-Auswärtssieg in Nürnberg ist der Klassenerhalt in der Deutschen Eishockey Liga vorzeitig gesichert.
@@ -54,6 +57,7 @@ Die Mannschaft zeigte von Beginn an eine konzentrierte Leistung und ließ dem Ge
     date: "25.02.2026",
     category: "Tickets",
     excerpt: "Das Heimspiel gegen Augsburg ist fast ausverkauft — nur noch rund 600 Tickets fehlen bis zum neuen Zuschauerrekord am Seilersee!",
+    image: "/images/arena-rink.webp",
     content: `Das Heimspiel am Sonntag gegen die Augsburger Panther (01.03.2026, 14:00 Uhr) ist nahezu ausverkauft. Aktuell fehlen nur noch rund 600 Karten bis zum neuen Zuschauerrekord in der Eissporthalle am Seilersee.
 
 Wer live dabei sein möchte, sollte sich schnell Tickets sichern. Restkarten sind über den Ticketshop und an der Tageskasse erhältlich.
@@ -66,6 +70,7 @@ Lasst uns gemeinsam Geschichte schreiben und den Seilersee zum Beben bringen!`,
     date: "24.02.2026",
     category: "Verein",
     excerpt: "Sportdirektor Franz-David Fritzmeier spricht über die strategische Ausrichtung der Roosters und die Planungen für die kommende Saison.",
+    image: "/images/hockey-player.webp",
     content: `Im exklusiven Interview gibt Sportdirektor Franz-David Fritzmeier Einblicke in die strategische Planung der Iserlohn Roosters.
 
 **Über die aktuelle Saison:**
@@ -83,6 +88,7 @@ Lasst uns gemeinsam Geschichte schreiben und den Seilersee zum Beben bringen!`,
     date: "20.02.2026",
     category: "Spielbericht",
     excerpt: "Die Roosters mussten sich im Testspiel bei den Pinguins Bremerhaven mit 2:5 geschlagen geben.",
+    image: "/images/hockey-news.webp",
     content: `Im Testspiel bei den Fischtown Pinguins Bremerhaven mussten die Roosters eine 2:5-Niederlage hinnehmen. Trainer nutzte die Gelegenheit, um verschiedene Formationen zu testen und jüngeren Spielern Eiszeit zu geben.
 
 "Testspiele dienen der Vorbereitung und dem Ausprobieren. Das Ergebnis ist zweitrangig", so der Coach nach dem Spiel.`,
@@ -93,6 +99,7 @@ Lasst uns gemeinsam Geschichte schreiben und den Seilersee zum Beben bringen!`,
     date: "25.02.2026",
     category: "Vorschau",
     excerpt: "Vorschau auf das Auswärtsspiel bei den Nürnberg Ice Tigers am Spieltag 45 der DEL Saison 2025/26.",
+    image: "/images/hero-hockey.webp",
     content: `**Vorschau Spieltag 45: Nürnberg Ice Tigers vs. Iserlohn Roosters**
 
 Die Roosters reisen zum vorletzten Auswärtsspiel der Saison nach Nürnberg. Ein Sieg würde den Klassenerhalt endgültig besiegeln.
