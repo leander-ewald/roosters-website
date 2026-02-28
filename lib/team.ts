@@ -21,6 +21,7 @@ export const ROSTER: Player[] = [
   { number: 26, name: "Lua Niehus", position: "Verteidiger", nationality: "Deutschland", flag: "de", image: `${IR}/2025/11/Lua_Niehus_vor_schwarz_mit_Kontur-480x480.jpg` },
   { number: 55, name: "Johannes Huß", position: "Verteidiger", nationality: "Deutschland", flag: "de", image: `${IR}/2024/08/Huss_vor_schwarz_mit_Kontur-480x480.jpg` },
   { number: 56, name: "Robin Norell", position: "Verteidiger", nationality: "Schweden", flag: "se", image: `${IR}/2025/08/Norell_vor_schwarz_mit_Kontur-480x480.jpg` },
+  { number: 77, name: "Colton Jobke", position: "Verteidiger", nationality: "Kanada", flag: "ca", image: `${IR}/2024/08/Jobke_vor_schwarz_mit_Kontur-480x480.jpg` },
   { number: 79, name: "Colin Ugbekile", position: "Verteidiger", nationality: "Deutschland", flag: "de", image: `${IR}/2022/05/Ugbekile_vor_schwarz_mit_Kontur-480x480.jpg` },
 
   // Stürmer
