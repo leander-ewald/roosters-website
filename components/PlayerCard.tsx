@@ -15,7 +15,7 @@ export interface Player {
 }
 
 const POS_COLORS = {
-  Torwart: "bg-accent text-white",
+  Torwart: "bg-accent text-primary",
   Verteidiger: "bg-primary-light text-white",
   Stürmer: "bg-cta text-white",
 };
@@ -46,7 +46,7 @@ export default function PlayerCard({ player }: { player: Player }) {
         )}
         {/* Number badge */}
         <div className="absolute top-3 right-3 w-12 h-12 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-          <span className="text-white font-black text-xl">{player.number}</span>
+          <span className="text-primary font-black text-xl">{player.number}</span>
         </div>
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-primary-light/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

@@ -116,7 +116,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 flex items-center justify-center rounded bg-white/5 text-white/30 hover:bg-accent hover:text-white transition-all"
+                  className="w-8 h-8 flex items-center justify-center rounded bg-white/5 text-white/30 hover:bg-accent hover:text-primary transition-all"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                     <path d={s.d} />

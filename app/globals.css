@@ -4,8 +4,8 @@
   --primary: #0C2753;
   --primary-dark: #071C3E;
   --primary-light: #1A3F7A;
-  --accent: #4A8FE7;
-  --accent-light: #6BA8F0;
+  --accent: #f9cd59;
+  --accent-light: #fbd97a;
   --white: #ffffff;
   --off-white: #F5F6F8;
   --cta: #C8102E;
@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-secondary:hover { background: var(--primary-light); }
 .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.4); }
 .btn-outline:hover { background: var(--white); color: var(--primary); border-color: var(--white); }
-.btn-accent { background: var(--accent); color: var(--white); border: none; }
+.btn-accent { background: var(--accent); color: var(--primary); border: none; font-weight: 800; }
 .btn-accent:hover { background: var(--accent-light); }
 .btn-ghost { background: transparent; color: var(--primary); border: 2px solid var(--gray-200); }
 .btn-ghost:hover { border-color: var(--primary); }

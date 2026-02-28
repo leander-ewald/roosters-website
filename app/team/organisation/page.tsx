@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ORGANISATION } from "@/lib/team";
 
 export const metadata: Metadata = {
@@ -42,10 +43,14 @@ export default function OrganisationPage() {
                     key={member.name}
                     className="flex items-center gap-4 bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow border border-gray-100"
                   >
-                    <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shrink-0">
-                      <span className="text-accent font-black text-xl">
-                        {member.name.split(" ").map(n => n[0]).join("")}
-                      </span>
+                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-primary to-primary-light">
+                      {member.image ? (
+                        <Image src={member.image} alt={member.name} width={56} height={56} className="w-full h-full object-cover object-top" unoptimized />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-accent font-black text-xl">{member.name.split(" ").map(n => n[0]).join("")}</span>
+                        </div>
+                      )}
                     </div>
                     <div>
                       <h3 className="font-bold text-base uppercase">{member.name}</h3>

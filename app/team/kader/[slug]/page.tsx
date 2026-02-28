@@ -23,7 +23,7 @@ export function generateMetadata({ params }: { params: Promise<{ slug: string }>
 }
 
 const POS_COLORS = {
-  Torwart: "bg-accent text-white",
+  Torwart: "bg-accent text-primary",
   Verteidiger: "bg-primary-light text-white",
   "Stürmer": "bg-cta text-white",
 };
@@ -75,7 +75,7 @@ export default async function PlayerProfilePage({ params }: { params: Promise<{ 
                 priority
               />
               <div className="absolute top-3 right-3 w-14 h-14 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-white font-black text-2xl">{player.number}</span>
+                <span className="text-primary font-black text-2xl">{player.number}</span>
               </div>
             </div>
 
